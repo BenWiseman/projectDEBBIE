@@ -1,0 +1,34 @@
+# Everything that must not go out with the repo.
+#
+# private/ holds the journal submission files, the CDS registration guide, the
+# venue strategy, the review correspondence and the session handover. None of it
+# belongs in a public data release, and some of it would be actively unhelpful
+# to a referee.
+private/
+
+# Quarto and LaTeX build litter
+paper/*.html
+paper/*_files/
+paper/*.tex
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/.quarto/
+_site/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.ipynb_checkpoints/
+
+# Scratch
+*.partial
+*.tmp
+.DS_Store
+
+# Large intermediates that are regenerated, never edited. The catalogue itself
+# IS tracked: it is the result, and it is checksummed.
+*.npz
+*.npy
+!catalogue/*.npy

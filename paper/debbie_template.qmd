@@ -1,0 +1,550 @@
+---
+title: "DEBBIE: {{N_COMMA}} low-surface-brightness galaxy candidates in DESI Legacy Imaging Surveys DR10, with a selection function measured against the catalogued galaxy population"
+author:
+  - name: Ben Wiseman
+    email: benjamin.h.wiseman@gmail.com
+date: last-modified
+abstract: |
+  The identification of low-surface-brightness (LSB) galaxies in wide-field
+  imaging is commonly approached with convolutional networks operating on
+  pixels. We find that the choice of representation matters more than the
+  choice of model. Describing each source by its light profile in concentric
+  annuli (24 radial bins, 32 position-angle cells, in $g$, $r$, and $z$),
+  reduced to per-annulus statistics and low-order azimuthal Fourier
+  amplitudes, and classifying these features with gradient-boosted trees
+  yields AUC 0.9810 (95% CI 0.9765--0.9852) on the DeepShadows benchmark
+  labels. Within the same pipeline and with the identical classifier, six
+  conventional catalogue features reach 0.9098, so the difference is
+  attributable to the representation. We make no
+  architecture claim: the frozen artefact does not record which feature set
+  the recurrent model consumed, and the fold-to-fold spread of a fixed model
+  exceeds any model-versus-model difference we can measure.
+  For context, the published DeepShadows convolutional network reports
+  0.9740 (published range 0.9700--0.9740) at the same sky positions and the
+  same visually-confirmed hard-negative class, from three times our training
+  sample; this is a comparison of complete pipelines, not of models.
+
+  Separately, we construct a catalogue from the DR10 south sweep catalogues
+  over the complete $|b| \ge 30^\circ$ footprint (approximately
+  {{AREA_COMMA}} deg$^2$) with an explicit cut-based selection. The
+  classifier orders the verification queue but does not define membership.
+  We screen the result against
+  $1.1\times10^{8}$ catalogued objects, followed by per-object queries to
+  NED, SIMBAD, and the SMUDGes catalogue. The result is DEBBIE, a catalogue
+  of {{N_COMMA}} galaxy candidates with no prior identification as
+  extragalactic objects in the catalogues and services queried (HyperLEDA,
+  SDSS DR12, GLADE+, 2MASS XSC, SMUDGes, NED, SIMBAD, DESI DR1). They are not
+  previously undetected: {{DESIG_PCT}}% carry a prior designation from an
+  automated all-sky survey, most often WISE. What is new is the
+  classification, not the detection.
+
+  The selection function is measured on real catalogued galaxies rather than
+  synthetic injections. Inside the targeted window
+  ($r_{\rm eff} = 3$--15$''$, $\mu_{\rm eff} = 24$--26.5) the photometric
+  cuts retain 56--89% of detected-and-resolved galaxies across the 17 populated
+  cells, and 70--89% in 15 of them, and the selection collapses above $r_{\rm eff} \approx 15''$. Three
+  conditionals are essential and are quantified in Section 5: the figure is
+  conditional on detection in the extract (14.2% of catalogued galaxies in the
+  footprint, dominated by the extract's $r_{\rm eff} \ge 2''$ cut), and on
+  lying inside the window (across all detected catalogued galaxies, most of which lie outside the
+  24--26.5 mag arcsec$^{-2}$ window this catalogue targets, retention is
+  10.4%); and it measures
+  the photometric cuts alone, excluding the fragment and clump filters and a
+  size-dependent verification-completeness term of 27%. It is not a survey
+  completeness.
+
+  Redshifts are available for {{Z_COV}}% of the
+  catalogue and all of them are photometric: removing the DESI-identified
+  entries removed every spectroscopic redshift with them, since those
+  spectra were DESI's own. The median object lies at
+  $z = {{Z_MED}}$ with $r_{\rm eff} \approx {{R_KPC}}$ kpc. Most entries are
+  therefore ordinary galaxies whose surface brightness is lowered by
+  cosmological dimming ({{TOLMAN}} mag arcsec$^{-2}$ at the median redshift)
+  rather than intrinsically diffuse systems; {{N_DWARF_COMMA}} objects at
+  $z < 0.05$ have dwarf sizes and masses. The catalogue, the code, and the
+  3.2 GB distilled source table from which any alternative selection can be
+  recomputed are released in full, together with a separately flagged
+  low-latitude extension of {{N_EXT_COMMA}} candidates at
+  $12^\circ < |b| < 30^\circ$ that inherits a galactic-cirrus caveat and is
+  excluded from every statistic in this paper.
+keywords: [galaxies, surveys, catalogues, low surface brightness, methods]
+format:
+  pdf:
+    documentclass: article
+    geometry: margin=1in
+    fontsize: 10pt
+    number-sections: true
+    colorlinks: true
+  html:
+    toc: true
+    number-sections: true
+bibliography: refs.bib
+---
+
+# Introduction
+
+Low-surface-brightness galaxies are under-represented in every major galaxy
+catalogue, and the deficit traces the selection functions of the surveys the
+catalogues are built from [@zaritsky2019]. Recent work has treated their
+identification as a deep-learning problem: @tanoglidis2021 trained
+convolutional networks ("DeepShadows") to separate LSB galaxies from imaging
+artifacts in the Dark Energy Survey, establishing a benchmark on
+visually-labelled data.
+
+Convolutional architectures are motivated by the absence of a known good
+feature basis. For galaxies, however, a strong prior exists: their light is
+approximately elliptically symmetric, and departures from that symmetry are
+themselves informative. A representation that bins light in concentric annuli
+encodes the symmetry directly instead of asking a network to learn it from
+data. This paper tests whether that representation, with an off-the-shelf
+classifier, matches the pixel-based deep model. We then construct a
+survey-scale catalogue with an explicit cut-based selection; the classifier is
+used operationally only to order candidates for per-object verification, and
+because every candidate is verified, no classifier score enters the catalogue
+definition.
+
+The result of the application is DEBBIE (Dual Ensemble of Boosted trees and
+Bidirectional recurrent networks for Identifying Extragalactic sources), a catalogue of {{N_COMMA}}
+galaxy candidates in DESI Legacy Imaging Surveys DR10 [@dey2019] with no prior
+identification as galaxies in the catalogues and services queried. The
+selection function is measured on real catalogued galaxies instead of
+synthetic injections (Section 5.5), and the full selection can be recomputed
+from a released 3.2 GB source extract.
+
+# Data
+
+## Survey data
+
+We use the DR10 south *sweep* catalogues: the survey's own Tractor
+photometry [@lang2016],
+comprising positions, morphological types, shape parameters, and forced
+photometry in $g$, $r$, $z$, and the WISE bands. We deliberately select from
+the survey's measurements instead of re-detecting sources in the imaging;
+Section 5.5 measures what that choice gives up in completeness.
+
+The main catalogue footprint is DR10 south at galactic latitude
+$|b| \ge 30^\circ$: all 874 sweep files in that region were processed, an
+occupied area of approximately {{AREA_COMMA}} deg$^2$. That latitude bound is
+physical: at lower latitude, galactic cirrus reproduces the morphology of
+diffuse galaxies and foreground extinction corrupts the surface-brightness
+selection. These cuts and the screening of the next subsection define the
+catalogue on their own; the Section 4 classifier prioritised the verification
+order and does not affect membership. Sweeps at
+$12^\circ < |b| < 30^\circ$ were also processed; the
+{{N_EXT_COMMA}} candidates they yield are released as a separately flagged
+extension, inherit a cirrus-contamination caveat, and enter none of the
+statistics reported here.
+
+## Benchmark data
+
+Classifier comparisons use the DeepShadows sample [@tanoglidis2021],
+restricted to their objects and to their visually-confirmed hard negative
+class (`artifact_hard_visually_rejected`), which is the class their published
+AUC is evaluated against. Including the easier SVM-rejected negatives inflates
+the AUC of every method by approximately 0.014 and is avoided.
+
+The comparison is asymmetric in two ways. One favours the published model:
+it was trained on 30,000 objects, against 10,121 available to ours. The other
+is unavoidable: the CNN operates on DES imagery with DES photometry, while we
+measure the same sky positions in DR10 imaging with our own measurement chain.
+The comparison is therefore between complete pipelines on shared labels, not
+between two classifiers on shared features; the controlled representation
+comparison in Section 4.2 is internal to our pipeline.
+
+# The radial representation
+
+Each source is measured in 24 concentric annuli with geometrically spaced
+radii, each divided into 32 position-angle cells, in each of $g$, $r$, and
+$z$. Per annulus we retain the mean and the median over position angle, and the
+amplitudes of the first four azimuthal Fourier modes, by discrete Fourier
+transform over those cells [following the
+long-standing use of low-order Fourier terms in isophote analysis;
+@jedrzejewski1987; @rix1995], which encode lopsidedness
+and ellipticity without a shape fit. We keep the median as well as the mean
+because it is robust to a single bright neighbour occupying one wedge. Cell
+coverage is tracked against the count each cell would have if the frame were
+complete, so that brick-edge clipping registers as reduced coverage and not as
+a spuriously faint annulus. Profiles are extracted twice, at the
+catalogue position and at a flux-weighted refined centroid; both are retained,
+and the offset between the two centres is a feature (a large offset
+flags blends and fragments; [Fig. @fig-representation]). Classifiers use library-default hyperparameters
+with no per-benchmark tuning; splits, seeds, and feature definitions are in
+the released code.
+
+![The representation, illustrated on a catalogue object using the released
+colour image (the production pipeline operates on calibrated FITS pixels):
+cutout (left), the annulus-by-position-angle grid (centre), and the resulting
+radial profile (right).](figures/fig1_representation.png){#fig-representation}
+
+# Classification results
+
+## Benchmark
+
+On a balanced test set of 3,340 objects (1,670 per class), split by object and
+evaluated once, gradient-boosted trees on the radial representation reach AUC
+0.9810 with a 2,000-resample bootstrap interval of [0.9765, 0.9852]. The
+published CNN reports 0.9740 [0.9700, 0.9740] on the same object and negative
+classes. The identical classifier on the six conventional catalogue features used in
+our production screening (profile monotonicity, concentration, signal-to-noise
+ratio, angular radius, central surface brightness, and local imaging depth)
+reaches 0.9098 [0.9002, 0.9198] ([Fig. @fig-benchmark]). Classifiers are
+XGBoost 3.4.0 and scikit-learn 1.9.0 with library defaults; splits and seeds
+are fixed in the released code.
+
+![AUC on the DeepShadows benchmark. The gain over conventional features comes
+from the representation; the classifier is identical in both of our
+rows.](figures/fig2_benchmark.png){#fig-benchmark}
+
+## Representation versus architecture
+
+The representation is separated from the model by a controlled ablation:
+the same gradient-boosted classifier, the same folds, four feature sets, and
+nothing varying but what the classifier is shown. One fold is held out by sky
+position rather than at random, so that no field contributes to both sides of
+the split; we call it the frozen spatial fold and use it wherever a single
+number is quoted. On that fold, six conventional catalogue features score
+0.9022, the per-annulus profile alone (144 features) 0.9645, that profile plus
+the six catalogue features (150) 0.9674, and the full flattened representation
+(1,023) 0.9775.
+
+A single fold cannot carry this claim, because the fold-to-fold spread of a
+fixed model on this data is about 0.05, comparable to the effect being
+measured. We therefore repeated all four arms over five stratified folds, with
+every arm scored on every fold (@tbl-ablation). The ordering is identical on
+all five, and the paired gain from six catalogue features to the full
+representation is $+0.062 \pm 0.003$, never falling below $+0.059$ on any
+fold. The pairing is what matters: fold difficulty is common to all four
+arms and cancels in the difference, so the relevant uncertainty is the 0.003
+spread of the paired gain and not the 0.05 spread of absolute AUCs.
+
+| feature set | features | mean AUC | sd |
+|---|---:|---:|---:|
+| six catalogue features | 6 | 0.9244 | 0.0028 |
+| per-annulus profile | 144 | 0.9801 | 0.0020 |
+| profile + six catalogue features | 150 | 0.9819 | 0.0019 |
+| full flattened representation | 1,023 | 0.9869 | 0.0009 |
+
+: Four-arm ablation over five stratified folds, identical classifier and
+folds throughout. {#tbl-ablation}
+
+Two caveats bound the ablation. These folds are randomly stratified, not
+spatially held out, so the absolute values are optimistic relative to the
+frozen spatial fold above, as the two sets of numbers show, and only the
+paired comparison is claimed. And the ablation establishes that the
+representation carries information the six catalogue features do not; it does
+not establish that any particular architecture exploits it best. We make no
+architecture claim. A recurrent model was also trained on this data and scores
+0.9780 on the frozen spatial fold, against 0.9775 for the trees, but the frozen
+artefact does not record which feature set it consumed, so that number cannot be
+paired with any row here.
+
+# The DEBBIE catalogue
+
+## Selection
+
+From the sweep catalogues we select sources with a resolved morphological type
+(`EXP`, `DEV`, `SER`, `REX`; Tractor assigns `SHAPE_R` = 0 to PSF sources, so
+this excludes point sources exactly), $r_{\rm eff} \ge 3''$, mean surface
+brightness within the effective radius $\mu_{\rm eff}$ between 24.0 and 26.5
+mag arcsec$^{-2}$ in $g$, at least two exposures in both $g$ and $r$, a $z$-band detection (a weaker,
+single-epoch requirement, retained because $z$-band epoch counts are lower
+over parts of the southern footprint), and `MASKBITS` = 0. The faint boundary of the
+surface-brightness window matters most: above $\mu_{\rm eff} = 26.5$, Tractor
+increasingly fits large radii to noise fluctuations, and in 48-object contact-sheet inspections of an early pool, sources above
+this threshold predominantly rendered as background fluctuations (62% of that
+pool lay above it).
+
+## Novelty screening
+
+Candidates are screened positionally, at 20$''$, against 110,190,191
+catalogued objects held locally: the full HyperLEDA catalogue [@makarov2014],
+SDSS DR12 galaxies over the footprint [@alam2015], GLADE+ [@dalya2022], the
+2MASS Extended Source Catalog [@jarrett2000], and SMUDGes [@zaritsky2019]. Local screening runs at $4.5\times10^{5}$ positions s$^{-1}$, which
+permits screening every candidate. Survivors
+are then queried individually against NED, SIMBAD, and SMUDGes. An object
+whose query fails is marked unverified and re-queried; a failed check is never
+recorded as novelty.
+
+Two further filters address failure modes identified during inspection.
+Tractor shreds extended sources, so an outer
+fragment can sit more than 20$''$ from the catalogued position. We remove
+fragments of large galaxies by rejecting any candidate with an entry of
+the 110-million-object index between 20$''$ and 45$''$. That filter also
+discards genuine candidates by chance coincidence: at 20,000 random footprint
+positions, 22.2%
+have an index entry in that annulus, so roughly one in five genuine candidates
+is removed by an unrelated neighbour. The selection function of Section 5.5
+does *not* capture that loss, because it measures the photometric cuts alone.
+The second filter removes spurious detections clustered on defective imaging
+bricks, rejecting any candidate with three or more other candidates within
+1.5$'$. One region of 6$'$ radius at $(\alpha, \delta) = (144.79^\circ,
+-2.79^\circ)$ is excluded permanently, after visual confirmation that the
+brick is defective.
+
+Duplicate entries arising when Tractor
+splits one galaxy into several rows are merged with a matching radius of
+$\max(6'', r_{\rm eff})$, retaining the largest member; 2,013 entries were
+merged. Objects whose NED or SIMBAD queries could not be completed after
+retries are excluded from the catalogue entirely, so a query failure can
+suppress a real candidate but cannot create a spurious one.
+
+## The nature of the claim
+
+The objects in DEBBIE carry no prior extragalactic identification of any
+type, under an operational definition: an object counts as identified if it
+appears in
+HyperLEDA (non-stellar), the SDSS DR12 galaxy class, GLADE+, the 2MASS XSC, or
+SMUDGes, or is typed as any extragalactic object (G, GPair, GTrpl, GGroup, QSO, AGN)
+by NED or SIMBAD [@wenger2000]; prior designations are collected from NED
+within 0.5$'$ of each position and recorded per object.
+
+One screen is absent without changing the count, and must still be
+disclosed: VST ATLAS DR4 [@shanks2025] classifies 98.55% of the entries it
+detects here as galaxies, and it was not queried. As with VII/292 below, that
+is a bulk automated morphological classification applied to every source in a
+survey footprint, not an identification of an individual object, so we
+do not treat it as prior identification and remove nothing for it. A reader
+who takes the opposite view should add it to the reasons to read this
+catalogue as classification rather than discovery.
+
+A second screen was missing entirely, and it does change the count. DESI DR1
+[@desidr1], a public spectroscopic release covering this same imaging
+footprint and selecting its targets from this same parent photometry, was not
+among the catalogues queried. Matching the catalogue against it at 2$''$
+finds a reliable spectrum (ZWARN = 0) for {{DESI_MAIN}} main-catalogue
+entries, {{DESI_MAIN_PCT}}% of the set, of which
+{{DESI_GAL}} are typed GALAXY and {{DESI_QSO}} QSO. Those objects carry a
+published spectroscopic extragalactic identification and are therefore not
+previously unidentified under our own definition. They are removed in v1.2,
+leaving {{N12}} entries, and every number in this paper is computed on the
+remaining set. The released tables mark every affected row.
+
+It is tempting to read the same match as a purity measurement, and we
+explicitly do not. Of the {{DESI_REL}} main-set entries with a reliable DESI
+classification, {{DESI_PURITY}}% are extragalactic and {{DESI_STAR}} are
+stars. That figure cannot be extrapolated to the catalogue. Every matched row
+is a deliberate DESI target, and DESI selects its targets from this same
+Legacy photometry using cuts (BGS, LRG, ELG) that are themselves galaxy
+selections. The measured quantity is therefore "of our candidates that DESI's
+galaxy selection also chose, what fraction are galaxies", which is largely
+determined by the purity of DESI's selection rather than of ours: the
+selection into the measured subsample is conditioned on the property being
+measured. The number is a fact about those {{DESI_REL}} objects, each of which
+has a spectrum, and those objects are precisely the ones removed from the
+catalogue for not being novel. It says nothing about the {{N_REMAIN}}
+entries that remain. Catalogue purity is unmeasured.
+
+A further consequence of the novelty definition cuts against the claim.
+cuts against the claim. {{VII292_PRESENT}}% of the catalogue appears in VII/292 [@duncan2022],
+the published DESI Legacy photometric-redshift catalogue from which we draw
+{{N_LSP_COMMA}} of our own redshifts, and of the entries there carrying a
+star/galaxy probability, {{VII292_NONSTELLAR}}% are assigned $p_{\rm star} < 0.5$. In that
+narrow sense a published catalogue has already treated most of these sources
+as non-stellar, and we rely on it while claiming novelty. Our position is
+that a bulk value-added catalogue, which assigns a photometric redshift and a
+star/galaxy probability to every source in the parent imaging including
+stars and artefacts, does not constitute identification of an individual
+object as a galaxy: no such entry is a claim about a particular object, none
+is ingested by NED or SIMBAD as an extragalactic classification, and none
+would support a designation. Readers who take the opposite view should read
+this catalogue as the classification of already-detected sources instead of
+the discovery of new ones. We regard that reading as legitimate, and it is
+why the title claims absence of prior identification rather than novelty of
+detection. NED aggregates the identifications of most
+published extragalactic surveys, which is the substantive basis of the claim;
+we do not claim exhaustiveness over catalogues outside these services. Nearly
+all entries ({{DESIG_PCT}}%) coincide with an automated detection in at least one all-sky
+survey, most commonly WISE [@wright2010], and these prior designations are recorded
+per object. The claim is that no queried publication or catalogue has classified the
+object as a galaxy. @zaritsky2019 assigned SMDG designations to roughly 7,000
+objects from this same imaging on the same basis.
+
+## Physical properties
+
+Redshifts are available for {{Z_COV}}% of the catalogue, and after the DESI
+removal none of them are spectroscopic: the {{N_SPEC_PREV_COMMA}} spectroscopic redshifts the
+catalogue previously carried were DESI's own, and left with the objects they
+belonged to. This is a photometric-redshift catalogue, and every distance-
+dependent quantity below inherits that. {{N_LSP_COMMA}} come from the Legacy
+Surveys photometric redshift catalogue [@zou2019] matched through the CDS X-Match service [@boch2012], and
+{{N_OWN_COMMA}} from a gradient-boosted photometric redshift trained on our
+own $g r z W1$ photometry for sky the public photo-$z$ does not cover
+($\sigma_{\rm NMAD} = 0.046$ against the Legacy photo-$z$ on spatially
+held-out sky; a shuffled-label control degrades to 0.194). The photo-$z$
+source is recorded per object, and the two photometric estimates are never
+merged in any analysis that depends on redshift
+quality.
+
+Distances assume flat $\Lambda$CDM with $H_0 = 70$ km s$^{-1}$ Mpc$^{-1}$
+and $\Omega_m = 0.3$; absolute magnitudes are not k-corrected; stellar masses
+use the $g{-}r$ colour mass-to-light relation of @bell2003 and are
+factor-of-two estimates. The median catalogue object lies at
+$z = {{Z_MED3}}$ with
+$r_{\rm eff} = {{R_KPC}}$ kpc, $M_g = {{MG_MED}}$, and
+$\log(M_\star/M_\odot) = {{LOGM_MED}}$. These are the parameters of ordinary
+galaxies, not dwarfs, and the explanation is cosmological surface-brightness
+dimming: the bolometric Tolman factor is
+$2.5\log_{10}(1+z)^{4} = 10\log_{10}(1+z) = {{TOLMAN}}$ mag arcsec$^{-2}$ at
+the median redshift, and for a band-limited specific intensity the
+corresponding factor, $7.5\log_{10}(1+z)$, is {{TOLMAN3}} mag arcsec$^{-2}$.
+Either value is a substantial fraction of the 2.5-mag selection window, so an
+intrinsically normal galaxy at the median redshift enters the window without
+being intrinsically diffuse. K-corrections are not applied; the argument
+concerns the population, not any individual object. The
+catalogue should be read as a census of previously uncatalogued galaxy
+candidates, most of them distant and dimmed, not of intrinsically
+diffuse systems. The exception is the nearby tail: {{N_DWARF_COMMA}} objects
+at $z < 0.05$, with median $r_{\rm eff} = {{DWARF_RKPC}}$ kpc and median
+$\log(M_\star/M_\odot) = {{DWARF_LOGM}}$, dwarf sizes and masses. Of these, {{N_UDG_COMMA}} satisfy $r_{\rm eff} > 1.5$ kpc and
+mean $\mu_{\rm eff} > 24$ mag arcsec$^{-2}$, approximating the
+ultra-diffuse criteria of @vandokkum2015, which are conventionally stated in
+central rather than mean surface brightness.
+
+## Selection function
+
+The selection function is measured against real catalogued galaxies rather
+than synthetic injections: for each known galaxy inside the observed
+footprint, we ask whether the sweeps contain a resolved counterpart and
+whether the *photometric cuts* retain it. Real profiles, neighbours, and
+imaging defects enter at their true rates. The measurement covers the cuts
+only; the novelty screen, the fragment and clump filters, and the
+verification-completeness term of [@sec-verifcomp] are all excluded from it.
+
+The reference population is the non-stellar entries of the same
+110-million-object screening index, restricted to $|b| \ge 30^\circ$ and to
+sky the extract covers, matched at 3$''$. Of 235,715 such galaxies, 33,595
+appear in the source extract as resolved sources with
+$r_{\rm eff} \ge 2''$; of those, in 15 of the 17
+populated cells inside the selection window the photometric cuts alone retain between 70% and
+89% of them ([Fig. @fig-sky]b); the remaining two cells are 56%
+(8--10$''$, $\mu$ 24--25) and 63% (10--15$''$, $\mu$ 24--25). Cell-wise Wilson 95% intervals are 0.1--9
+percentage points (half-width) for cells with at least 50 galaxies and are
+included in `selection_function.json` in the release. Above $r_{\rm eff} = 15''$ only one of 34 known galaxies survives. With
+$N = 34$ the Wilson 95% interval is 0.5--14.9%, wider than the point estimate,
+so this bounds the retention without measuring it. The cause is not in doubt:
+Tractor shreds the largest galaxies and the fragment filter then removes the
+pieces. DEBBIE is
+therefore substantially incomplete above $r_{\rm eff} \approx 15''$ and
+cannot constrain the abundance of large LSB systems.
+
+### Verification completeness {#sec-verifcomp}
+
+The selection function above is not the end-to-end one, and the difference is
+large enough to state separately. Candidates enter the catalogue only after a
+per-object novelty check, and that check did not run on the whole candidate
+pool. Of {{POOL_HI}} candidates passing the cuts at $|b| \ge 30^\circ$,
+{{POOL_VER}} were checked and {{POOL_UNVER}} ({{POOL_UNVER_PCT}}%) were not,
+because per-object queries are excluded once their retries are exhausted.
+
+That loss is not uniform in size. The checked fraction falls monotonically
+from 74.8% at $r_{\rm eff} = 3$--4$''$ to 73.5% (4--6$''$), 59.6%
+(6--10$''$) and 49.4% (10--15$''$): the largest candidates are the least
+likely to have been checked, plausibly because they have more catalogued
+neighbours and so generate the slowest and most failure-prone queries.
+End-to-end, the selection fraction is therefore approximately the product of the
+cut retention and this term: near 10--15$''$ roughly $0.63 \times 0.49
+\approx 0.31$, not 0.63. Correspondingly, the incompleteness above
+$r_{\rm eff} \approx 15''$ reported earlier is a joint
+statement about the fragment filter and this bias, not about the sky.
+{{UNVER_BIG}} unchecked candidates with $r_{\rm eff} \ge 6''$ remain in the
+pool; they are released with the extract so that the omission is auditable.
+
+Two limits bound the selection function of Section 5.5. It is
+completeness relative to *known* galaxies; a population absent from both
+published catalogues and the sweeps is invisible to it. And it cannot be
+decomposed into detection and selection terms, because the archived source
+extract retains only sources with $r_{\rm eff} \ge 2''$. The raw sweeps that
+would allow the decomposition are no longer held.
+
+The catalogue is also not spatially uniform: source density falls by a factor of two to four in the band
+$-2^\circ < \delta < +2^\circ$ ({{DEC_B1}} and {{DEC_B2}} objects in the
+two equatorial 2$^\circ$ bins, against {{DEC_NBR_LO}}--{{DEC_NBR_HI}} in the
+six neighbouring bins), where prior cataloguing in the screening pool is
+densest (the SDSS equatorial stripes, including Stripe 82), so a
+larger fraction of candidates there is screened out as already catalogued.
+Clustering analyses must model this.
+
+![Left: the {{N_COMMA}} catalogue objects on the sky. Right: the selection
+fraction for known galaxies present in the sweeps, as a function of size and
+surface brightness; bins with fewer than 50 galaxies are
+starred.](figures/fig3_sky_selection.png){#fig-sky}
+
+## Purity
+
+Purity has not been measured by visual inspection. What the catalogue looks
+like can still be shown, and [Fig. @fig-montage] shows it from both ends: eight
+selected entries above, eight drawn at random below. A {{PURITY_N_COMMA}}-object sample stratified over
+{{PURITY_CELLS}} cells of the ($r_{\rm eff}$, $\mu_{\rm eff}$) plane is
+reserved for that, weighted so the unbiased catalogue total can be
+reconstructed, with an effective size of {{PURITY_NEFF_COMMA}}. One
+independent instrument does constrain purity in the meantime. VST ATLAS DR4
+[@shanks2025] images part of this footprint with a different telescope,
+pipeline and seeing, and, unlike a spectroscopic target list, catalogues
+everything it detects, stars and noise included, so selection into the matched
+sample is on detectability rather than on the property being measured.
+Matching 20,000 random catalogue positions at 2$''$ returns a counterpart for
+28.0%, and of those 98.55% carry `MERGEDCLASS` galaxy or probable galaxy,
+1.04% star or probable star, and 0.41% noise: an implied contamination of
+1.45% (95% CI 1.14--1.76%).
+
+Three limits stop this being the purity measurement. The matched subset is
+0.21 mag brighter than the unmatched remainder, so it under-samples the faint
+end where contamination should concentrate. VST's classifier and ours both
+rest on morphological star--galaxy separation, so they are correlated methods,
+not independent tests. And the match reaches only the 28% of the
+catalogue inside the VST ATLAS footprint.
+
+A second external check bounds contamination from below. Gaia DR3, which enters
+the pipeline nowhere, has a counterpart at 1.84% of 20,000 random catalogue
+positions, and 0.79% (95% CI 0.67--0.91%) show 5$\sigma$ parallax or proper
+motion and are therefore certainly stars. That is a hard lower bound and a weak
+one: implied total magnitudes are median $g = 20.8$ and only 18.1% of the
+catalogue is brighter than $g = 20$, where Gaia astrometry is reliable. Within
+that Gaia-sensitive subset the star rate is about 4.4%. Extrapolating it, rather
+than the 0.79%, is the relevant comparison, and it leaves plausible
+contamination at several percent, which does not contradict the
+$p_{\rm star}$ expectation of {{PSTAR_EXP_PCT}}%.
+
+As a further interim expectation, treating the Legacy Surveys $p_{\rm star}$
+as a calibrated probability gives $\sum_i p_{{\rm star},i} =$
+{{PSTAR_EXP_COMMA}} expected stellar contaminants ({{PSTAR_EXP_PCT}}%);
+{{PSTAR_COMMA}} entries ({{PSTAR_PCT}}%) individually exceed
+$p_{\rm star} = 0.5$ and carry a flag. Entries are retained with the flag,
+not removed.
+
+![Catalogue objects, 75$''$ per panel. The upper block is eight selected
+examples: the largest entries clearing every screen. The lower block is eight
+drawn at random from the catalogue, at the same scale. The random half is
+fainter and more marginal than the selected half, which is what the catalogue
+typically contains.](figures/fig4_montage.png){#fig-montage}
+
+# Data availability
+
+The catalogue is released as `DEBBIE.csv` ({{N_COMMA}} rows) with
+`DEBBIE_lowb_extension.csv` ({{N_EXT_COMMA}} rows), version 1.2, each with an
+accompanying ECSV and SHA-256 checksum, containing designations, positions,
+sizes, surface brightnesses, colours, Sérsic indices, redshifts with per-object
+provenance, physical sizes, absolute magnitudes, stellar-mass estimates, and
+all prior automated designations. Designation numbers are stable across
+versions by construction and the sequence is not contiguous (merged duplicates
+retire their numbers). The full selection can be recomputed from the released
+3.2 GB distilled source table (33.5 million resolved sources, 31 columns),
+which reproduces the catalogue exactly.
+
+# Limitations
+
+Photometry is Tractor's [@lang2016] and is not independently remeasured.
+{{OWN_PCT}}% of redshifts derive from our own photometric estimator, which is
+trained on photometric labels; its quoted scatter is measured against the
+Legacy photo-$z$, not against spectroscopy, and these values are suitable for
+population statistics only. None of the redshifts are spectroscopic.
+Purity is unmeasured: the stratified visual sample reserved for it has not yet
+been inspected. The
+selection inherits Tractor's own detection incompleteness, collapses above
+$r_{\rm eff} \approx 15''$, excludes $|b| < 30^\circ$ entirely, and is
+spatially non-uniform where prior surveys are deepest.
+
+# References {.unnumbered}
+
+::: {#refs}
+:::

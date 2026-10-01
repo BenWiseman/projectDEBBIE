@@ -1,0 +1,73 @@
+{
+  "r>=6, mu<25.5": {
+    "judged": 79,
+    "n_catalogue": 2644,
+    "purity": 0.9576,
+    "ci": [
+      0.8695,
+      0.9871
+    ],
+    "n_eff": 56.1
+  },
+  "r<6,  mu<25.5": {
+    "judged": 304,
+    "n_catalogue": 60628,
+    "purity": 0.9559,
+    "ci": [
+      0.9259,
+      0.9741
+    ],
+    "n_eff": 292.4
+  },
+  "r>=6, mu>=25.5": {
+    "judged": 64,
+    "n_catalogue": 5830,
+    "purity": 0.667,
+    "ci": [
+      0.5253,
+      0.7838
+    ],
+    "n_eff": 47.7
+  },
+  "r<6,  mu>=25.5": {
+    "judged": 361,
+    "n_catalogue": 92619,
+    "purity": 0.4999,
+    "ci": [
+      0.4482,
+      0.5515
+    ],
+    "n_eff": 355.8
+  },
+  "bright half": {
+    "judged": 383,
+    "n_catalogue": 63272,
+    "purity": 0.956,
+    "ci": [
+      0.9276,
+      0.9736
+    ],
+    "n_eff": 319.5
+  },
+  "faint half": {
+    "judged": 425,
+    "n_catalogue": 98449,
+    "purity": 0.5089,
+    "ci": [
+      0.4593,
+      0.5583
+    ],
+    "n_eff": 388.1
+  },
+  "ALL": {
+    "judged": 808,
+    "n_catalogue": 161721,
+    "purity": 0.7026,
+    "ci": [
+      0.6679,
+      0.7352
+    ],
+    "n_eff": 706.7,
+    "undecided": 191
+  }
+}
