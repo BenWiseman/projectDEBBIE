@@ -32,3 +32,17 @@ __pycache__/
 *.npz
 *.npy
 !catalogue/*.npy
+
+# The raw v1.5 tables are over GitHub's 100 MB file limit. They sit here for the
+# Zenodo upload; GitHub gets catalogue/DEBBIE_v1.5.csv.gz, which decompresses to
+# the CSV in catalogue/SHA256SUMS.
+catalogue/DEBBIE_v1.5.csv
+catalogue/DEBBIE_v1.5.ecsv
+*.part
+
+# LaTeX litter from rebuilding the Research Note
+rnaas/*.aux
+rnaas/*.fdb_latexmk
+rnaas/*.fls
+rnaas/*.log
+rnaas/*.out

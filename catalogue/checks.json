@@ -1,0 +1,52 @@
+{
+ "entries": 427022,
+ "by_part": {
+  "original": 161533,
+  "recovered": 141405,
+  "extension": 124084
+ },
+ "cut_failures": {
+  "TYPE": {
+   "original": 0,
+   "recovered": 0,
+   "extension": 0
+  },
+  "SHAPE_R >= 3": {
+   "original": 0,
+   "recovered": 0,
+   "extension": 0
+  },
+  "mu_eff 24-26.5": {
+   "original": 0,
+   "recovered": 0,
+   "extension": 0
+  },
+  "NOBS_G, NOBS_R >= 2": {
+   "original": 0,
+   "recovered": 0,
+   "extension": 0
+  },
+  "FLUX_G, R, Z > 0": {
+   "original": 0,
+   "recovered": 0,
+   "extension": 0
+  },
+  "MASKBITS = 0": {
+   "original": 0,
+   "recovered": 0,
+   "extension": 0
+  },
+  "latitude band": {
+   "original": 0,
+   "recovered": 0,
+   "extension": 0
+  }
+ },
+ "scored": 426764,
+ "centroid_flag": {
+  "0": 363373,
+  "1": 63391,
+  "2": 258
+ },
+ "max_shift_rounded_arcsec": 0.02527867283042979
+}

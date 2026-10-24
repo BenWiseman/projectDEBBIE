@@ -1,106 +1,71 @@
 # DEBBIE
 
-**D**ual **E**nsemble of **B**oosted trees and **B**idirectional recurrent
-networks for **I**dentifying **E**xtragalactic sources.
+**D**R10 **E**nsemble of **B**oosted trees and **B**idirectional recurrent networks for
+**I**dentifying **E**xtragalactic sources.
 
-A catalogue of **161,721 low-surface-brightness galaxy candidates** with no prior
-identification as extragalactic objects, selected from DESI Legacy Imaging
-Surveys DR10 south over the complete |b| ≥ 30° footprint (≈12,900 deg²), plus a
-separately flagged low-latitude extension of 78,713.
+DEBBIE v1.5 holds 427,022 low surface brightness galaxy candidates from the DESI Legacy
+Imaging Surveys DR10 south sweeps that no galaxy catalogue I searched, NED, SIMBAD or DESI DR1
+identifies as a galaxy. Designations, DEBBIE NNNNNN, are in the IAU Dictionary of Nomenclature
+(accepted 2026-10-22).
 
-Run from public data on one desktop.
+| part | Galactic latitude | entries | purity, % (95% interval) |
+|---|---|---|---|
+| original | \|b\| >= 30 | 161,533 | 89.1 (86.4–91.6) |
+| recovered | \|b\| >= 30 | 141,405 | 86.1 (81.1–89.9) |
+| extension | 12 < \|b\| < 30 | 124,084 | 84.8 (80.3–88.4) |
 
----
+Purity is the weighted share of visually inspected objects with a galaxy at the catalogued
+position, undecided objects left out. The recovered and extension figures come from 800 of a
+2,000-object sample, judged in random order.
 
-## The result in one line
+## Submitting
 
-Describing a source by its light profile in concentric annuli, and classifying
-those features with gradient-boosted trees, scores **AUC 0.9810 [0.9765, 0.9852]**
-on the DeepShadows benchmark, against **0.9098** for six conventional catalogue
-features through the identical classifier. The gain is in the representation.
-No GPU required.
-
-## What is in the catalogue, and how clean it is
-
-Purity is **measured**, not asserted: 999 objects from a 1,999-object sample
-stratified over 28 cells of the (r_eff, μ_eff) plane, judged by eye, weighted so
-the catalogue total reconstructs.
-
-| subset | entries | purity (95% CI) |
-|---|---|---|
-| **μ_eff < 25.5** | **63,272** | **95.6% [92.8, 97.4]** |
-| μ_eff ≥ 25.5 | 98,449 | 50.9% [45.9, 55.8] |
-| all | 161,721 | 70.3% [66.8, 73.5] |
-
-The bright subset is defined by a cut on a released column, not a model score, so
-the published selection function applies to it unchanged.
-
-191 of the 999 judged were undecided. Counting them all as contaminants gives
-56.1%, all as galaxies 76.3%; the true value is inside that range.
-
-## What the claim is, precisely
-
-These objects are *previously unidentified as galaxies*. **99.3% carry a prior
-automated designation**, most often WISE, and every one is recorded per object.
-The claim is not that no instrument recorded the light. It is that no publication
-or catalogue ever classified it as a galaxy. A check that *failed* is never
-counted as novelty.
-
-All redshifts are photometric. Objects are reported as **candidates**.
-
----
+`SUBMIT.md` has the Zenodo upload, the Research Note submission with its cover letter, and
+what follows publication.
 
 ## Layout
 
 | path | what |
 |---|---|
-| `catalogue/` | the catalogue, checksums, purity measurements, visual verdicts |
-| `paper/` | the manuscript (Quarto), figures, bibliography |
-| `code/` | the pipeline, in the order it runs |
-| `showcase/` | self-contained HTML viewers for the catalogue and the screening |
-| `docs/` | column definitions and methods notes |
+| `catalogue/` | v1.5: `DEBBIE_v1.5.csv.gz`, its `README.md` (the Zenodo description), `SHA256SUMS`, `checks.json` |
+| `catalogue/purity/` | purity results and every visual verdict behind them |
+| `catalogue/v1.2/` | the v1.2 release of 2026-10-01, superseded |
+| `rnaas/` | the Research Note: `debbie_rnaas.pdf` and `.tex` to submit, the template and `fill_rnaas.py` that fills it |
+| `paper/` | the AJ draft (Quarto), figures and bibliography; its numbers are still v1.2 (161,721 entries) |
+| `code/` | the v1.2 pipeline; the v1.5 scripts are not yet copied here |
+| `showcase/` | v1.2 HTML viewers |
+| `private/` | gitignored: CDS guide, venue notes, review correspondence, handover |
 
-## Verifying the catalogue
+The raw `DEBBIE_v1.5.csv` and `DEBBIE_v1.5.ecsv` (116 and 147 MB) are over GitHub's 100 MB
+file limit. They sit in `catalogue/` for the Zenodo upload and are gitignored.
 
-```bash
-cd catalogue && sha256sum -c SHA256
-```
-
-Every number in the manuscript is filled from `catalogue/PAPER_NUMBERS.json` by
-`paper/fill_numbers.py`, which **fails loudly on any unfilled placeholder**. The
-paper previously quoted four different catalogue sizes at once; this makes that
-impossible.
-
-Reproduce the designation counts:
+## Checking the files
 
 ```bash
-python3 - <<'PY'
-import csv, io, re
-def scan(p):
-    return [int(re.match(r'[A-Z]+\s+(\d+)$', r['name']).group(1))
-            for r in csv.DictReader(io.open(p, encoding='utf-8'))]
-a, b = scan('catalogue/DEBBIE.csv'), scan('catalogue/DEBBIE_lowb_extension.csv')
-print(len(a), len(b), len(a)+len(b), max(a+b), len(set(a) & set(b)))
-PY
+cd catalogue
+zcat DEBBIE_v1.5.csv.gz > DEBBIE_v1.5.csv
+sha256sum -c --ignore-missing SHA256SUMS
 ```
 
-Expected: `161721 78713 240434 268380 0`.
+`pandas.read_csv("catalogue/DEBBIE_v1.5.csv.gz")` reads the table as it is.
 
-## Reproducing the selection
+## Updating this repo
 
-The raw sweeps are 2.44 TB and are not distributed. `code/distil.py` produces the
-3.2 GB extract (33.5M resolved sources, 31 columns) that every selection runs
-against; any alternative cut re-runs from it in seconds.
+Work happens in `~/star`. `~/star/sweeps/sync_projectdebbie.py` copies the release, the
+Note, the paper and the purity files here and checks every copy by SHA-256. It refuses to
+overwrite a file with uncommitted edits here, so edit those files in `~/star`, not here.
+README.md and SUBMIT.md are written here and the sync never touches them.
 
-## Known limitations
+## Caveats
 
-Photometry is the survey's and is not independently remeasured. No redshift is
-spectroscopic. The selection collapses above r_eff ≈ 15″, excludes |b| < 30°
-entirely, and is spatially non-uniform where prior surveys are deepest. Galactic
-extinction is **not** removed before the surface-brightness cut, so a small
-fraction of entries are intrinsically brighter than the stated window.
+Photometry is the survey's. No redshift is spectroscopic. The cuts keep most known galaxies
+with `SHAPE_R` of 3 to 15" in the surface-brightness window and almost none larger. The screen
+is uneven across the sky: inside the SDSS footprint far fewer entries survive than outside it.
+Extinction is not removed before the surface-brightness cut. Numbers are never reused, so the
+sequence has gaps.
 
 ## Data credit
 
-Any publication from this must carry the Legacy Surveys acknowledgement
-verbatim. It is long and it is required.
+Work using this catalogue uses Legacy Surveys DR10, and should carry the Legacy Surveys
+acknowledgement (https://www.legacysurvey.org/acknowledgment/). The screen also used DESI DR1,
+DES DR2, SDSS-III and 2MASS; their texts are linked in `SUBMIT.md`.

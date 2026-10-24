@@ -1,0 +1,314 @@
+{
+ "complete": true,
+ "n_first": 999,
+ "n_second": 498,
+ "second_look": {
+  "rejections": 207,
+  "undecided": 191,
+  "accepted_controls": 100
+ },
+ "A": {
+  "purity": {
+   "all entries ALL": {
+    "uncorrected": 0.9013,
+    "uncorrected_ci": [
+     0.8805,
+     0.9208
+    ],
+    "corrected": 0.8914,
+    "corrected_ci": [
+     0.8644,
+     0.916
+    ],
+    "still_undecided": 52,
+    "undecided_bound": [
+     0.8369,
+     0.8976
+    ]
+   },
+   "all entries bright": {
+    "uncorrected": 0.961,
+    "uncorrected_ci": [
+     0.9384,
+     0.9816
+    ],
+    "corrected": 0.9366,
+    "corrected_ci": [
+     0.8886,
+     0.9752
+    ],
+    "still_undecided": 7,
+    "undecided_bound": [
+     0.9114,
+     0.938
+    ]
+   },
+   "all entries faint": {
+    "uncorrected": 0.8602,
+    "uncorrected_ci": [
+     0.8296,
+     0.8897
+    ],
+    "corrected": 0.8602,
+    "corrected_ci": [
+     0.8296,
+     0.8897
+    ],
+    "still_undecided": 45,
+    "undecided_bound": [
+     0.7891,
+     0.8718
+    ]
+   },
+   "star-flagged left out ALL": {
+    "uncorrected": 0.9015,
+    "uncorrected_ci": [
+     0.8802,
+     0.9216
+    ],
+    "corrected": 0.8915,
+    "corrected_ci": [
+     0.8644,
+     0.9165
+    ],
+    "still_undecided": 47,
+    "undecided_bound": [
+     0.8389,
+     0.8975
+    ]
+   },
+   "star-flagged left out bright": {
+    "uncorrected": 0.959,
+    "uncorrected_ci": [
+     0.9353,
+     0.9805
+    ],
+    "corrected": 0.9343,
+    "corrected_ci": [
+     0.8846,
+     0.9738
+    ],
+    "still_undecided": 6,
+    "undecided_bound": [
+     0.9092,
+     0.9357
+    ]
+   },
+   "star-flagged left out faint": {
+    "uncorrected": 0.8625,
+    "uncorrected_ci": [
+     0.8308,
+     0.8927
+    ],
+    "corrected": 0.8625,
+    "corrected_ci": [
+     0.8308,
+     0.8927
+    ],
+    "still_undecided": 41,
+    "undecided_bound": [
+     0.7944,
+     0.8734
+    ]
+   }
+  },
+  "accepted_controls": {
+   "ALL": {
+    "n": 100,
+    "decided": 99,
+    "now_rejected": 2
+   },
+   "bright": {
+    "n": 59,
+    "decided": 58,
+    "now_rejected": 2
+   },
+   "faint": {
+    "n": 41,
+    "decided": 41,
+    "now_rejected": 0
+   }
+  }
+ },
+ "B": {
+  "purity": {
+   "all entries ALL": {
+    "uncorrected": 0.577,
+    "uncorrected_ci": [
+     0.543,
+     0.6115
+    ],
+    "corrected": 0.3596,
+    "corrected_ci": [
+     0.3025,
+     0.416
+    ],
+    "still_undecided": 52,
+    "undecided_bound": [
+     0.3361,
+     0.3969
+    ]
+   },
+   "all entries bright": {
+    "uncorrected": 0.8453,
+    "uncorrected_ci": [
+     0.8051,
+     0.8856
+    ],
+    "corrected": 0.6378,
+    "corrected_ci": [
+     0.534,
+     0.7405
+    ],
+    "still_undecided": 7,
+    "undecided_bound": [
+     0.62,
+     0.6466
+    ]
+   },
+   "all entries faint": {
+    "uncorrected": 0.3922,
+    "uncorrected_ci": [
+     0.3496,
+     0.4365
+    ],
+    "corrected": 0.1681,
+    "corrected_ci": [
+     0.1066,
+     0.2304
+    ],
+    "still_undecided": 45,
+    "undecided_bound": [
+     0.1542,
+     0.2369
+    ]
+   },
+   "star-flagged left out ALL": {
+    "uncorrected": 0.5844,
+    "uncorrected_ci": [
+     0.5506,
+     0.6197
+    ],
+    "corrected": 0.364,
+    "corrected_ci": [
+     0.3071,
+     0.4202
+    ],
+    "still_undecided": 47,
+    "undecided_bound": [
+     0.3411,
+     0.3997
+    ]
+   },
+   "star-flagged left out bright": {
+    "uncorrected": 0.8608,
+    "uncorrected_ci": [
+     0.822,
+     0.8993
+    ],
+    "corrected": 0.6508,
+    "corrected_ci": [
+     0.5461,
+     0.7555
+    ],
+    "still_undecided": 6,
+    "undecided_bound": [
+     0.6329,
+     0.6594
+    ]
+   },
+   "star-flagged left out faint": {
+    "uncorrected": 0.3972,
+    "uncorrected_ci": [
+     0.3537,
+     0.4417
+    ],
+    "corrected": 0.1697,
+    "corrected_ci": [
+     0.1077,
+     0.2326
+    ],
+    "still_undecided": 41,
+    "undecided_bound": [
+     0.1563,
+     0.2352
+    ]
+   }
+  },
+  "accepted_controls": {
+   "ALL": {
+    "n": 100,
+    "decided": 99,
+    "now_rejected": 44
+   },
+   "bright": {
+    "n": 59,
+    "decided": 58,
+    "now_rejected": 17
+   },
+   "faint": {
+    "n": 41,
+    "decided": 41,
+    "now_rejected": 27
+   }
+  }
+ },
+ "became": {
+  "rejected": {
+   "small": 106,
+   "no": 59,
+   "amb": 33,
+   "yes": 9
+  },
+  "rejected vst_detected": {
+   "small": 22,
+   "no": 10,
+   "amb": 3,
+   "yes": 2
+  },
+  "rejected vst_not_detected": {
+   "small": 17,
+   "amb": 2,
+   "no": 8,
+   "yes": 1
+  },
+  "undecided": {
+   "small": 119,
+   "yes": 30,
+   "no": 24,
+   "amb": 18
+  },
+  "accepted": {
+   "yes": 55,
+   "small": 42,
+   "amb": 1,
+   "no": 2
+  }
+ },
+ "vst_final": {
+  "galaxy": {
+   "in_footprint": 328,
+   "matched": 272,
+   "vst_galaxy": 272
+  },
+  "not": {
+   "in_footprint": 29,
+   "matched": 21,
+   "vst_galaxy": 20
+  },
+  "undecided": {
+   "in_footprint": 12,
+   "matched": 9,
+   "vst_galaxy": 9
+  }
+ },
+ "first_stage": {
+  "accepted": 601,
+  "set_aside": 398
+ },
+ "star_flag": {
+  "second_look_no": 85,
+  "of_those_flagged": 5,
+  "sample_flagged": 49
+ }
+}

@@ -1,0 +1,211 @@
+{
+ "first_sample": {
+  "deepshadows_mean": 0.846,
+  "deepshadows_trees": 0.822,
+  "deepshadows_network": 0.837,
+  "stage2_mean": 0.408
+ },
+ "n_judged": 800,
+ "n_decided": 729,
+ "n_scored": 729,
+ "results": {
+  "add": {
+   "n": 356,
+   "galaxies": 270,
+   "not": 86,
+   "deepshadows_mean": [
+    0.848,
+    [
+     0.804,
+     0.886
+    ]
+   ],
+   "deepshadows_trees": [
+    0.815,
+    [
+     0.767,
+     0.858
+    ]
+   ],
+   "deepshadows_network": [
+    0.852,
+    [
+     0.807,
+     0.891
+    ]
+   ],
+   "stage2_mean": [
+    0.547,
+    [
+     0.474,
+     0.619
+    ]
+   ]
+  },
+  "ext": {
+   "n": 373,
+   "galaxies": 303,
+   "not": 70,
+   "deepshadows_mean": [
+    0.79,
+    [
+     0.737,
+     0.841
+    ]
+   ],
+   "deepshadows_trees": [
+    0.741,
+    [
+     0.681,
+     0.798
+    ]
+   ],
+   "deepshadows_network": [
+    0.803,
+    [
+     0.749,
+     0.85
+    ]
+   ],
+   "stage2_mean": [
+    0.515,
+    [
+     0.435,
+     0.594
+    ]
+   ]
+  },
+  "both": {
+   "n": 729,
+   "galaxies": 573,
+   "not": 156,
+   "deepshadows_mean": [
+    0.825,
+    [
+     0.794,
+     0.858
+    ]
+   ],
+   "deepshadows_trees": [
+    0.783,
+    [
+     0.746,
+     0.817
+    ]
+   ],
+   "deepshadows_network": [
+    0.833,
+    [
+     0.8,
+     0.863
+    ]
+   ],
+   "stage2_mean": [
+    0.533,
+    [
+     0.479,
+     0.587
+    ]
+   ]
+  },
+  "add screened": {
+   "n": 257,
+   "galaxies": 224,
+   "not": 33,
+   "deepshadows_mean": [
+    0.809,
+    [
+     0.742,
+     0.864
+    ]
+   ],
+   "deepshadows_trees": [
+    0.773,
+    [
+     0.704,
+     0.84
+    ]
+   ],
+   "deepshadows_network": [
+    0.809,
+    [
+     0.742,
+     0.869
+    ]
+   ],
+   "stage2_mean": [
+    0.503,
+    [
+     0.379,
+     0.633
+    ]
+   ]
+  },
+  "ext screened": {
+   "n": 342,
+   "galaxies": 293,
+   "not": 49,
+   "deepshadows_mean": [
+    0.763,
+    [
+     0.702,
+     0.823
+    ]
+   ],
+   "deepshadows_trees": [
+    0.726,
+    [
+     0.661,
+     0.788
+    ]
+   ],
+   "deepshadows_network": [
+    0.761,
+    [
+     0.703,
+     0.817
+    ]
+   ],
+   "stage2_mean": [
+    0.461,
+    [
+     0.364,
+     0.559
+    ]
+   ]
+  },
+  "both screened": {
+   "n": 599,
+   "galaxies": 517,
+   "not": 82,
+   "deepshadows_mean": [
+    0.782,
+    [
+     0.737,
+     0.824
+    ]
+   ],
+   "deepshadows_trees": [
+    0.746,
+    [
+     0.697,
+     0.793
+    ]
+   ],
+   "deepshadows_network": [
+    0.782,
+    [
+     0.737,
+     0.822
+    ]
+   ],
+   "stage2_mean": [
+    0.477,
+    [
+     0.396,
+     0.556
+    ]
+   ]
+  }
+ }
+}

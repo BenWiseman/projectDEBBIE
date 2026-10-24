@@ -1,0 +1,194 @@
+% Research Note of the AAS. Template: every double-brace key is filled by fill_rnaas.py
+% from the result files; do not put numbers in by hand. Limits (AAS preparation
+% guidelines, read 2026-10-20): 1,500 words including title, headers, captions,
+% authors, acknowledgements and references, 150 of them for the abstract; one
+% figure or one table; first person singular; no line numbers.
+\documentclass{aastex701}
+
+\begin{document}
+
+\title{DEBBIE: 427,022 Galaxy Candidates with No Prior Identification in the DESI Legacy Imaging Surveys DR10}
+
+\author{Ben Wiseman}
+\affiliation{Independent researcher}
+\email{benjamin.h.wiseman@gmail.com}
+
+\begin{abstract}
+I present DEBBIE, 427,022 low surface brightness galaxy candidates selected from
+the DESI Legacy Imaging Surveys DR10 source catalogue, none of which the galaxy
+catalogues I searched, NED, SIMBAD or DESI DR1 identify as a galaxy. Candidates are chosen
+by cuts on Tractor size, surface brightness and data quality, and screened
+against 1.1$\times10^{8}$ catalogued galaxies. Visual inspection of
+stratified samples finds a galaxy at the catalogued position for
+85--89\% of entries. Boosted trees and a bidirectional recurrent
+network trained on radial light profiles score every entry with usable imaging,
+and no entry is removed on its score. Within the surface-brightness window the
+cuts keep 56--89\% of known galaxies with effective radii of
+3--15$''$ and almost none above. All redshifts are photometric. The
+designations, DEBBIE NNNNNN, are registered with the IAU.
+\end{abstract}
+
+\section{Introduction}
+
+Imaging surveys catalogue every source they detect, and those catalogues
+contain galaxies that no galaxy catalogue lists. DEBBIE selects them from the
+DR10 sweep catalogues of the DESI Legacy Imaging Surveys \citep{dey2019}, which
+hold a Tractor model fit \citep{lang2016} for every detection. It adds no
+detections: every entry is a Tractor source, and the claim is only that none of
+the catalogues and services below identifies it as a galaxy. The name
+stands for DR10 Ensemble of Boosted trees and Bidirectional recurrent networks
+for Identifying Extragalactic sources. A full paper is in preparation.
+
+\section{Selection}
+
+I keep every source in the DR10 south sweeps with \texttt{TYPE} \texttt{EXP},
+\texttt{DEV}, \texttt{SER} or \texttt{REX}, which excludes point sources;
+$r_{\rm eff} = \texttt{SHAPE\_R} \ge 3''$; mean surface brightness within
+$r_{\rm eff}$, $\mu_{\rm eff} = g + 2.5\log_{10}(2\pi r_{\rm eff}^2)$, between
+24.0 and 26.5 mag arcsec$^{-2}$, with $g$ from \texttt{FLUX\_G} and not corrected
+for extinction; \texttt{NOBS\_G} and \texttt{NOBS\_R} $\ge 2$; \texttt{FLUX\_G},
+\texttt{FLUX\_R} and \texttt{FLUX\_Z} $> 0$; and \texttt{MASKBITS} $= 0$. Fainter
+than 26.5, Tractor increasingly fits large radii to noise. The main footprint is
+$|b| \ge 30^\circ$, about 12,900 deg$^2$, and a flagged extension covers
+$12^\circ < |b| < 30^\circ$ with the same cuts.
+
+\section{Screening}
+
+A candidate is removed if (1) a galaxy in a local index lies within
+$\max(2r_{\rm eff}, 10'')$; the index holds 110,190,191 objects from HyperLEDA
+\citep{makarov2014}, SDSS DR12 photometric galaxies \citep{alam2015}, GLADE+
+\citep{dalya2022}, the 2MASS Extended Source Catalog \citep{jarrett2000}, 6dFGS
+\citep{jones2009} and SMUDGes \citep{zaritsky2023}; (2) it lies within half the
+$D_{25}$ diameter of a HyperLEDA galaxy, which removes fragments of large
+galaxies; (3) NED or SIMBAD \citep{wenger2000} lists an object of a galaxy,
+quasar or AGN type within $\max(5'', r_{\rm eff})$, and a failed NED query also
+removes it; (4) DESI DR1 \citep{desidr1} has a spectrum with \texttt{ZWARN}
+$= 0$ within $2''$, whatever its class; or (5) three or more other candidates lie
+within $1.5'$, which happens on defective imaging. DES DR2 sources
+\citep{abbott2021des} do not count against a candidate, since that catalogue
+lists sources, not identifications. Rows within $\max(6'', r_{\rm eff})$ of each
+other are merged, keeping the largest.
+
+The catalogue has three parts that share one number sequence
+(Table~\ref{tab:parts}). The original part, at $|b| \ge 30^\circ$, and
+78,234 of the extension entries were screened with fixed radii in place of
+rule (3), removing any candidate with a NED galaxy within $30''$, any SIMBAD
+object within $15''$, or any index object, DES DR2 included, within $45''$.
+The recovered part holds the candidates at $|b| \ge 30^\circ$ that those wider
+radii removed and that pass rules (1)--(5); the rest of the extension was
+recovered in the same way.
+
+\section{Scores}
+
+For each entry with usable imaging I sample the $g$, $r$ and $z$ images in 24
+annuli and 32 position angles about the catalogued position and divide all three
+bands by one amplitude, so that profile shape and colour survive and brightness
+does not. Gradient-boosted trees and a bidirectional recurrent network score
+these profiles, and the catalogue gives both scores and their mean. Trained on
+the DeepShadows labels \citep{tanoglidis2021}, low surface brightness galaxies
+against artefacts, the trees reach AUC 0.981 on that benchmark. Against my
+visual verdicts the mean score separates galaxies from the rest with AUC
+0.85 in the original part, 0.81 in the recovered part and 0.76 in
+the extension. In the original part's sample, dropping entries with a mean score
+below 0.06 keeps 95\% of the galaxies and removes 28\% of the rest.
+A second pair, trained on HyperLEDA galaxies against stars and
+faint Tractor fits, does not separate them (AUC 0.41 and 0.48);
+its scores are released but should not be used for selection. No entry is
+removed on its score.
+
+\section{Purity}
+
+I judged by eye 999 objects from a sample of the original part and the
+first 800, in random order, of 2,000 drawn from the other two parts,
+on Legacy Surveys colour images. Both samples are stratified over
+($r_{\rm eff}$, $\mu_{\rm eff}$) cells and weighted by the entries each object
+represents. A galaxy lies at the catalogued position for 89.1\% of the
+original part, 86.1\% of the recovered part and 84.8\% of the
+extension, leaving out objects I could not decide; Table~\ref{tab:parts} also
+gives each figure with those counted as non-galaxies. One person made every
+verdict, and the recovered and extension figures will change as the second
+sample is finished.
+
+\section{Completeness and caveats}
+
+Measured on catalogued galaxies in the footprint, the cuts alone keep
+56--89\% of those with $r_{\rm eff} = 3$--$15''$ and
+$\mu_{\rm eff}$ in the window, but 1 of 34 above $15''$,
+because Tractor splits large galaxies into fragments that fail the cuts. DEBBIE
+cannot constrain large diffuse galaxies. The screen makes the catalogue uneven:
+between right ascensions 150$^\circ$ and 200$^\circ$ it holds 2.1 entries
+per deg$^2$ inside the SDSS footprint ($4^\circ < \delta < 20^\circ$), against
+24.8 just south of it ($-10^\circ < \delta < -4^\circ$). In the original
+part 63\% of the redshifts come from \citet{duncan2022} and the rest
+from a five-band model I trained on those, which suits population statistics
+only. The median is 0.29 and only 2,591 entries (1.6\%) lie
+at $z < 0.05$, so most are distant galaxies rather than nearby diffuse dwarfs.
+
+\section{Designations and data}
+
+Designations take the form DEBBIE NNNNNN and are registered with the IAU
+through the CDS Dictionary of Nomenclature. Numbers run from 3 to 453450
+with gaps, because a number is assigned once and never reused. Positions are
+Tractor positions on the Gaia frame. A flux-weighted centroid on the DR10 images
+lies within 0.40$''$ of the catalogued position for half the entries, and
+more than $2.5''$ away, or could not be measured, for 15\%. The
+catalogue, with each entry's Tractor photometry and shape, part, scores and
+centroid offset, is at Zenodo (\textbf{DOI to come}).
+
+\begin{table}[h]
+\centering
+\caption{The three parts. Purity: weighted share of inspected objects with a
+galaxy at the catalogued position, undecided objects left out (95\% interval)
+or counted as non-galaxies. AUC: mean score of the DeepShadows-trained pair
+against the same verdicts. Centroid: share of entries whose centroid lies
+within $1''$.\label{tab:parts}}
+\begin{tabular}{lcrcccc}
+\hline
+Part & $|b|$ & Entries & Purity (\%) & Undecided as no (\%) & AUC & Centroid (\%) \\
+\hline
+Original & $\ge 30^\circ$ & 161,533 & 89.1 (86.4--91.6) & 83.7 & 0.85 & 81.9 \\
+Recovered & $\ge 30^\circ$ & 141,405 & 86.1 (81.1--89.9) & 73.7 & 0.81 & 66.5 \\
+Extension & 12--30$^\circ$ & 124,084 & 84.8 (80.3--88.4) & 79.0 & 0.76 & 65.5 \\
+All & & 427,022 & & & & 72.0 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{acknowledgments}
+I thank C.~Loup of the IAU Clearing House for help with the designations. I used
+data from the Legacy Surveys \citep{dey2019}, DESI DR1 \citep{desidr1}, DES DR2
+\citep{abbott2021des} and SDSS-III \citep{alam2015}, whose acknowledgements are
+at \url{https://www.legacysurvey.org/acknowledgment/},
+\url{https://data.desi.lbl.gov/doc/acknowledgments/},
+\url{https://www.darkenergysurvey.org/the-des-project/data-access/} and
+\url{https://www.sdss3.org/collaboration/boiler-plate.php}. This publication
+makes use of data products from the Two Micron All Sky Survey \citep{skrutskie2006},
+which is a joint project of the University of Massachusetts and the Infrared
+Processing and Analysis Center/California Institute of Technology, funded by the
+National Aeronautics and Space Administration and the National Science
+Foundation. The NASA/IPAC Extragalactic Database is funded by NASA and operated
+by the California Institute of Technology. SIMBAD and VizieR are operated at
+CDS, Strasbourg. I acknowledge the use of the HyperLEDA database
+(\url{http://leda.univ-lyon1.fr}).
+\end{acknowledgments}
+
+\software{XGBoost, PyTorch, NumPy, SciPy, Astropy}
+
+\begin{thebibliography}{}
+\bibitem[Abbott et al.(2021)]{abbott2021des} Abbott, T. M. C., et al. 2021, ApJS, 255, 20
+\bibitem[Alam et al.(2015)]{alam2015} Alam, S., et al. 2015, ApJS, 219, 12
+\bibitem[D\'alya et al.(2022)]{dalya2022} D\'alya, G., et al. 2022, MNRAS, 514, 1403
+\bibitem[DESI Collaboration(2026)]{desidr1} DESI Collaboration 2026, AJ, 171, 285
+\bibitem[Dey et al.(2019)]{dey2019} Dey, A., et al. 2019, AJ, 157, 168
+\bibitem[Duncan(2022)]{duncan2022} Duncan, K. J. 2022, MNRAS, 512, 3662
+\bibitem[Jarrett et al.(2000)]{jarrett2000} Jarrett, T. H., et al. 2000, AJ, 119, 2498
+\bibitem[Jones et al.(2009)]{jones2009} Jones, D. H., et al. 2009, MNRAS, 399, 683
+\bibitem[Lang et al.(2016)]{lang2016} Lang, D., Hogg, D. W., \& Mykytyn, D. 2016, ascl:1604.008
+\bibitem[Makarov et al.(2014)]{makarov2014} Makarov, D., et al. 2014, A\&A, 570, A13
+\bibitem[Skrutskie et al.(2006)]{skrutskie2006} Skrutskie, M. F., et al. 2006, AJ, 131, 1163
+\bibitem[Tanoglidis et al.(2021)]{tanoglidis2021} Tanoglidis, D., \'Ciprijanovi\'c, A., \& Drlica-Wagner, A. 2021, A\&C, 35, 100469
+\bibitem[Wenger et al.(2000)]{wenger2000} Wenger, M., et al. 2000, A\&AS, 143, 9
+\bibitem[Zaritsky et al.(2023)]{zaritsky2023} Zaritsky, D., et al. 2023, ApJS, 267, 27
+\end{thebibliography}
+
+\end{document}
