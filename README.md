@@ -32,12 +32,33 @@ what follows publication.
 | `catalogue/v1.2/` | the v1.2 release of 2026-10-01, superseded |
 | `rnaas/` | the Research Note: `debbie_rnaas.pdf` and `.tex` to submit, the template and `fill_rnaas.py` that fills it |
 | `paper/` | the AJ draft (Quarto), figures and bibliography; its numbers are still v1.2 (161,721 entries) |
+| `tools/` | `debbie_images.py`: choose entries and download their DR10 image, Tractor model and residual, with a gallery page |
 | `code/` | the v1.2 pipeline; the v1.5 scripts are not yet copied here |
 | `showcase/` | v1.2 HTML viewers |
 | `private/` | gitignored: CDS guide, venue notes, review correspondence, handover |
 
 The raw `DEBBIE_v1.5.csv` and `DEBBIE_v1.5.ecsv` (116 and 147 MB) are over GitHub's 100 MB
 file limit. They sit in `catalogue/` for the Zenodo upload and are gitignored.
+
+## Getting images
+
+`tools/debbie_images.py` picks entries by name, position, part or any column, can take a
+random or stratified sample, and downloads each one's DR10 image, Tractor model and residual
+from the Legacy Surveys cutout service, with `index.html` to look through them. Standard
+library only.
+
+```bash
+# 60 entries spread over score and size, with a wider context image
+python3 tools/debbie_images.py --sample 60 --stratify deepshadows_mean:4 shape_r:3 --context
+# the 40 highest-scoring entries above 12"
+python3 tools/debbie_images.py --where "shape_r>=12" --sort deepshadows_mean --desc --limit 40
+# everything within 20' of a position, as FITS in g, r and z
+python3 tools/debbie_images.py --cone 185.45 -8.85 20 --format fits
+```
+
+`python3 tools/debbie_images.py -h` lists every option. Output goes to `debbie_images/`
+(gitignored). A stratified sample's `selection.csv` gives each entry a weight, the number of
+selected entries it stands for. Tests: `python3 -m unittest tools/test_debbie_images.py`.
 
 ## Checking the files
 
@@ -54,7 +75,7 @@ sha256sum -c --ignore-missing SHA256SUMS
 Work happens in `~/star`. `~/star/sweeps/sync_projectdebbie.py` copies the release, the
 Note, the paper and the purity files here and checks every copy by SHA-256. It refuses to
 overwrite a file with uncommitted edits here, so edit those files in `~/star`, not here.
-README.md and SUBMIT.md are written here and the sync never touches them.
+README.md, SUBMIT.md and `tools/` are written here and the sync never touches them.
 
 ## Caveats
 

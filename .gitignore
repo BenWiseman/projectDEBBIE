@@ -46,3 +46,6 @@ rnaas/*.fdb_latexmk
 rnaas/*.fls
 rnaas/*.log
 rnaas/*.out
+
+# Output of tools/debbie_images.py
+debbie_images/
