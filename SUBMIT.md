@@ -13,8 +13,8 @@ New upload in the AAS Journals community: https://zenodo.org/uploads/new?communi
   publishing. It goes into `~/star/paper/rnaas/fill_rnaas.py` (ZENODO), the Note is rebuilt
   and the sync copies it here.
 - Resource type: Dataset.
-- Title: DEBBIE v1.5: low surface brightness galaxy candidates from the DESI Legacy Imaging
-  Surveys DR10
+- Title: DEBBIE v1.5: 427,022 Galaxy Candidates with No Prior Identification in the DESI
+  Legacy Imaging Surveys DR10 (the Note's title, with the version)
 - Creator: Wiseman, Ben. Affiliation: Independent researcher.
 - Description: paste `catalogue/README.md`.
 - Version: 1.5. Licence: Creative Commons Attribution 4.0 International.
