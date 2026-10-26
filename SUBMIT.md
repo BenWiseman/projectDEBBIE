@@ -8,7 +8,7 @@ New upload in the AAS Journals community: https://zenodo.org/uploads/new?communi
 (the RNAAS guidelines point there for data tables).
 
 - Files, all from `catalogue/`: `DEBBIE_v1.5.csv`, `DEBBIE_v1.5.ecsv`, `README.md`,
-  `SHA256SUMS` (238 MB together).
+  `SHA256SUMS` (238 MB together); and `rnaas/debbie_rnaas.pdf`, added after the DOI is in it.
 - DOI: "Do you already have a DOI?" No, then "Get a DOI now!". Send the DOI to Claude before
   publishing. It goes into `~/star/paper/rnaas/fill_rnaas.py` (ZENODO), the Note is rebuilt
   and the sync copies it here.
