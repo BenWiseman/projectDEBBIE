@@ -30,7 +30,7 @@ Submit at https://journals.aas.org/submission/ (journal: Research Notes of the A
   there is no figure.
 - Title, abstract and author come from the .tex. UAT keywords are collected at acceptance,
   not now (AAS manuscript preparation page, read 2026-10-24).
-- Words: 1,424 of 1,500 by texcount with references; abstract 148 of 150. The AAS counts
+- Words: 1,453 of 1,500 by texcount with references; abstract 148 of 150. The AAS counts
   acknowledgements ("these count against your 1500 word limit", RNAAS preparation
   guidelines).
 
@@ -71,5 +71,5 @@ Ben Wiseman
 | 2MASS | 37 | in the Note in full |
 
 A version with the DESI and short Legacy Surveys texts in full and the body cut
-(`~/star/paper/rnaas/debbie_rnaas_fullack`) is 1,526 words, 26 over, and still leaves out DES
+(`~/star/paper/rnaas/debbie_rnaas_fullack`) is 1,539 words, 39 over, and still leaves out DES
 and SDSS-III. Not for submission.
