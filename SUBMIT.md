@@ -15,7 +15,7 @@ New upload in the AAS Journals community: https://zenodo.org/uploads/new?communi
 - Resource type: Dataset.
 - Title: DEBBIE v1.5: 427,022 Galaxy Candidates with No Prior Identification in the DESI
   Legacy Imaging Surveys DR10 (the Note's title, with the version)
-- Creator: Wiseman, Ben. Affiliation: Independent researcher.
+- Creator: Wiseman, Benjamin (ORCID 0009-0002-1023-9026). Affiliation: Linnet Labs PTY.
 - Description: paste `catalogue/README.md`.
 - Version: 1.5. Licence: Creative Commons Attribution 4.0 International.
 - Keywords: low surface brightness galaxies; galaxy catalogues; DESI Legacy Imaging Surveys;
