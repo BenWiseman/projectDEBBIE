@@ -43,7 +43,7 @@ Imaging Surveys DR10" as a Research Note. Prof. Lintott confirmed on 20 October 
 catalogue may appear first in RNAAS and then in a main journal, and asked whether the Note
 could describe the selection well enough for the catalogue to be used before the full paper.
 It gives every cut and screening rule, and the catalogue, with each entry's Tractor
-photometry, scores and centroid offset, is at Zenodo (DOI). The designations are registered
+photometry, scores and centroid offset, is at Zenodo (doi:10.5281/zenodo.23659669). The designations are registered
 in the IAU Dictionary of Nomenclature, accepted on 22 October.
 
 The Note uses data from the Legacy Surveys, DESI DR1, DES DR2 and SDSS-III. Their required

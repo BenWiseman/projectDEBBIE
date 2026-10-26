@@ -41,7 +41,7 @@ TPL = f"{HERE}/debbie_rnaas_template{'_fullack' if FULLACK else ''}.tex"
 OUT = f"{HERE}/debbie_rnaas{'_fullack' if FULLACK else ''}.tex"
 C = "/home/ben/star/catalogue_debbie"
 TEXCOUNT = "/home/ben/.TinyTeX/bin/x86_64-linux/texcount"
-ZENODO = r"\textbf{DOI to come}"          # after CDS enters DEBBIE in the Dictionary
+ZENODO = r"\href{https://doi.org/10.5281/zenodo.23659669}{doi:10.5281/zenodo.23659669}"  # reserved 2026-10-26
 
 
 def load(p):
