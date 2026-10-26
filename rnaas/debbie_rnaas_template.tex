@@ -21,8 +21,9 @@ by cuts on Tractor size, surface brightness and data quality, and screened
 against {{INDEX_GAL_E8}}$\times10^{8}$ catalogued galaxies. Visual inspection of
 stratified samples finds a galaxy at the catalogued position for
 {{PUR_LO}}--{{PUR_HI}}\% of entries. Boosted trees and a bidirectional recurrent
-network trained on radial light profiles score every entry with usable imaging,
-and no entry is removed on its score. Within the surface-brightness window the
+network trained on radial light profiles score every entry with usable imaging.
+No entry is removed on its score, but the {{S02_ALL}}\% with a mean score above 0.2 are
+{{S02_LO}}--{{S02_HI}}\% galaxies. Within the surface-brightness window the
 cuts keep {{SF_LO}}--{{SF_HI}}\% of known galaxies with effective radii of
 3--15$''$ and almost none above. All redshifts are photometric. The
 designations, DEBBIE NNNNNN, are registered with the IAU.
@@ -92,22 +93,25 @@ visual verdicts the mean score separates galaxies from the rest with AUC
 the extension. In the original part's sample, dropping entries with a mean score
 below {{THR}} keeps 95\% of the galaxies and removes {{THR_NOT}}\% of the rest.
 A second pair, trained on HyperLEDA galaxies against stars and
-faint Tractor fits, does not separate them (AUC {{AUC_S2_O}} and {{AUC_S2_V3}});
+faint Tractor fits, reaches AUC {{AUC_S2_O}} and {{AUC_S2_V3}} on the two samples;
 its scores are released but should not be used for selection. No entry is
 removed on its score.
 
 \section{Purity}
 
-I judged by eye {{PUR1_N}} objects from a sample of the original part and the
-first {{PUR3_N}}, in random order, of {{PUR3_DRAWN}} drawn from the other two parts,
-on Legacy Surveys colour images. Both samples are stratified over
+I judged by eye {{PUR1_N}} objects from a sample of the original part and
+{{PUR3_N}} from a sample of the other two parts, on Legacy Surveys colour images. Both samples are stratified over
 ($r_{\rm eff}$, $\mu_{\rm eff}$) cells and weighted by the entries each object
 represents. A galaxy lies at the catalogued position for {{PUR_O}}\% of the
 original part, {{PUR_R}}\% of the recovered part and {{PUR_E}}\% of the
 extension, leaving out objects I could not decide; Table~\ref{tab:parts} also
-gives each figure with those counted as non-galaxies. One person made every
-verdict, and the recovered and extension figures will change as the second
-sample is finished.
+gives each figure with those counted as non-galaxies. Purity falls close to
+catalogued galaxies, and the fixed radii kept the original part at least $45''$
+from them; in the second sample it is {{NEAR_PUR}}\% within $20''$ of one and
+{{FAR_PUR}}\% beyond $30''$.
+Entries with a mean score above 0.2, {{S02_O}}\% of the original part and
+{{S02_RE}}\% of the others, are {{S02_LO1}}--{{S02_HI1}}\% galaxies in each part. One
+person made every verdict.
 
 \section{Completeness and caveats}
 

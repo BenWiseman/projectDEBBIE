@@ -16,6 +16,7 @@ Sources:
   scores                     output/benchmark_deepshadows.json,
                              dual_screen_vs_verdicts.json (first sample),
                              v3_model_check.json (second sample, v1.5 members)
+  purity by neighbour, score purity_by_property.json
   astrometry, scored         v1.5/cds_entry.json (sweeps/cds_entry_v15.py)
 
 A key missing from KEYS, or one left in the output, stops the render. The
@@ -63,6 +64,7 @@ bm = load("/home/ben/star/output/benchmark_deepshadows.json")
 dv = load("dual_screen_vs_verdicts.json")["scores"]
 v3 = load("v3_model_check.json")["results"]
 ce = load("v1.5/cds_entry.json")
+pp = load("purity_by_property.json")             # sweeps/purity_by_property.py
 sample3 = load("/home/ben/legacy/inspect_sample_v3.json")
 
 # Selection function: cells inside the window, 3-15", with at least 30 known
@@ -104,6 +106,19 @@ for part in ("original", "recovered", "extension"):
                 f"{pct(ce['by_sub'][part]['within_1'])} \\\\")
 rows.append(f"All & & {comma(num['entries'])} & & & & {pct(ce['astrometry']['within_1'])} \\\\")
 
+# Where purity is high and low (second sample by distance to a catalogued
+# galaxy; every part above a mean score of 0.2). The Note says the fixed radii
+# kept catalogued galaxies out of the original part: check it on its sample.
+near = pp["second"]["nearest_galaxy_split"]
+if pp["first_min_galaxy_sep"] < 45:
+    raise SystemExit(f"an original sample object lies {pp['first_min_galaxy_sep']}\" from a catalogued galaxy")
+above = {part: pp["score"][f"{part} >= 0.2"] for part in ("original", "recovered", "extension")}
+others = (above["recovered"]["share_of_part_above"] * num["by_sub"]["recovered"]
+          + above["extension"]["share_of_part_above"] * num["by_sub"]["extension"]) \
+    / (num["by_sub"]["recovered"] + num["by_sub"]["extension"])
+lo02 = min(a["above"]["purity"] for a in above.values())
+hi02 = max(a["above"]["purity"] for a in above.values())
+
 n_gal = load("wide_screen_count.json")["index_objects_used"]
 KEYS = {
     "N": comma(num["entries"]),
@@ -133,6 +148,11 @@ KEYS = {
     "LOW": num["lowest"]["name"].split()[1], "HIGH": num["highest"]["name"].split()[1],
     "HALF": f"{ce['astrometry']['half_within']:.2f}",
     "REFUSED": f"{100 * ce['astrometry']['refused']:.0f}",
+    "NEAR_PUR": f"{near['a: within 20']['purity']:.0f}", "FAR_PUR": f"{near['c: beyond 30']['purity']:.0f}",
+    "S02_O": f"{above['original']['share_of_part_above']:.0f}", "S02_RE": f"{others:.0f}",
+    "S02_ALL": f"{pp['score_share_all']['0.2']:.0f}",
+    "S02_LO": f"{np.floor(lo02):.0f}", "S02_HI": f"{np.ceil(hi02):.0f}",
+    "S02_LO1": f"{lo02:.1f}", "S02_HI1": f"{hi02:.1f}",
     "ZENODO": ZENODO,
     "TABLE_ROWS": "\n".join(rows),
 }

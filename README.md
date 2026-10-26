@@ -11,12 +11,15 @@ identifies as a galaxy. Designations, DEBBIE NNNNNN, are in the IAU Dictionary o
 | part | Galactic latitude | entries | purity, % (95% interval) |
 |---|---|---|---|
 | original | \|b\| >= 30 | 161,533 | 89.1 (86.4–91.6) |
-| recovered | \|b\| >= 30 | 141,405 | 86.1 (81.1–89.9) |
-| extension | 12 < \|b\| < 30 | 124,084 | 84.8 (80.3–88.4) |
+| recovered | \|b\| >= 30 | 141,405 | 76.1 (73.0–78.9) |
+| extension | 12 < \|b\| < 30 | 124,084 | 81.9 (79.2–84.3) |
 
 Purity is the weighted share of visually inspected objects with a galaxy at the catalogued
-position, undecided objects left out. The recovered and extension figures come from 800 of a
-2,000-object sample, judged in random order.
+position, undecided objects left out: 999 objects for the original part, 2,002 for the other
+two. It falls close to catalogued galaxies (60% within 20" of one, 84% beyond 30", in the
+second sample). Entries with `deepshadows_mean` above 0.2, 57% of the catalogue, are 95–97%
+galaxies in every part. `catalogue/purity/purity_by_property.json` breaks purity down by
+size, surface brightness, score, Tractor type, Gaia stars and neighbours.
 
 ## Submitting
 

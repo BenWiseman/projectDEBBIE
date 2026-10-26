@@ -20,9 +20,10 @@ catalogues I searched, NED, SIMBAD or DESI DR1 identify as a galaxy. Candidates 
 by cuts on Tractor size, surface brightness and data quality, and screened
 against 1.1$\times10^{8}$ catalogued galaxies. Visual inspection of
 stratified samples finds a galaxy at the catalogued position for
-85--89\% of entries. Boosted trees and a bidirectional recurrent
-network trained on radial light profiles score every entry with usable imaging,
-and no entry is removed on its score. Within the surface-brightness window the
+76--89\% of entries. Boosted trees and a bidirectional recurrent
+network trained on radial light profiles score every entry with usable imaging.
+No entry is removed on its score, but the 57\% with a mean score above 0.2 are
+95--97\% galaxies. Within the surface-brightness window the
 cuts keep 56--89\% of known galaxies with effective radii of
 3--15$''$ and almost none above. All redshifts are photometric. The
 designations, DEBBIE NNNNNN, are registered with the IAU.
@@ -88,26 +89,29 @@ these profiles, and the catalogue gives both scores and their mean. Trained on
 the DeepShadows labels \citep{tanoglidis2021}, low surface brightness galaxies
 against artefacts, the trees reach AUC 0.981 on that benchmark. Against my
 visual verdicts the mean score separates galaxies from the rest with AUC
-0.85 in the original part, 0.81 in the recovered part and 0.76 in
+0.85 in the original part, 0.87 in the recovered part and 0.83 in
 the extension. In the original part's sample, dropping entries with a mean score
 below 0.06 keeps 95\% of the galaxies and removes 28\% of the rest.
 A second pair, trained on HyperLEDA galaxies against stars and
-faint Tractor fits, does not separate them (AUC 0.41 and 0.48);
+faint Tractor fits, reaches AUC 0.41 and 0.61 on the two samples;
 its scores are released but should not be used for selection. No entry is
 removed on its score.
 
 \section{Purity}
 
-I judged by eye 999 objects from a sample of the original part and the
-first 800, in random order, of 2,000 drawn from the other two parts,
-on Legacy Surveys colour images. Both samples are stratified over
+I judged by eye 999 objects from a sample of the original part and
+2,002 from a sample of the other two parts, on Legacy Surveys colour images. Both samples are stratified over
 ($r_{\rm eff}$, $\mu_{\rm eff}$) cells and weighted by the entries each object
 represents. A galaxy lies at the catalogued position for 89.1\% of the
-original part, 86.1\% of the recovered part and 84.8\% of the
+original part, 76.1\% of the recovered part and 81.9\% of the
 extension, leaving out objects I could not decide; Table~\ref{tab:parts} also
-gives each figure with those counted as non-galaxies. One person made every
-verdict, and the recovered and extension figures will change as the second
-sample is finished.
+gives each figure with those counted as non-galaxies. Purity falls close to
+catalogued galaxies, and the fixed radii kept the original part at least $45''$
+from them; in the second sample it is 60\% within $20''$ of one and
+84\% beyond $30''$.
+Entries with a mean score above 0.2, 70\% of the original part and
+48\% of the others, are 95.4--96.5\% galaxies in each part. One
+person made every verdict.
 
 \section{Completeness and caveats}
 
@@ -147,8 +151,8 @@ within $1''$.\label{tab:parts}}
 Part & $|b|$ & Entries & Purity (\%) & Undecided as no (\%) & AUC & Centroid (\%) \\
 \hline
 Original & $\ge 30^\circ$ & 161,533 & 89.1 (86.4--91.6) & 83.7 & 0.85 & 81.9 \\
-Recovered & $\ge 30^\circ$ & 141,405 & 86.1 (81.1--89.9) & 73.7 & 0.81 & 66.5 \\
-Extension & 12--30$^\circ$ & 124,084 & 84.8 (80.3--88.4) & 79.0 & 0.76 & 65.5 \\
+Recovered & $\ge 30^\circ$ & 141,405 & 76.1 (73.0--78.9) & 76.1 & 0.87 & 66.5 \\
+Extension & 12--30$^\circ$ & 124,084 & 81.9 (79.2--84.3) & 81.8 & 0.83 & 65.5 \\
 All & & 427,022 & & & & 72.0 \\
 \hline
 \end{tabular}

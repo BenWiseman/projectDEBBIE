@@ -30,7 +30,7 @@ Submit at https://journals.aas.org/submission/ (journal: Research Notes of the A
   there is no figure.
 - Title, abstract and author come from the .tex. UAT keywords are collected at acceptance,
   not now (AAS manuscript preparation page, read 2026-10-24).
-- Words: 1,379 of 1,500 by texcount with references; abstract 136 of 150. The AAS counts
+- Words: 1,431 of 1,500 by texcount with references; abstract 148 of 150. The AAS counts
   acknowledgements ("these count against your 1500 word limit", RNAAS preparation
   guidelines).
 

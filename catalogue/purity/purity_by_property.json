@@ -1,0 +1,1578 @@
+{
+ "second": {
+  "shape_r": {
+   "3-3.5": {
+    "n": 668,
+    "n_eff": 660.0,
+    "purity": 80.2,
+    "ci": [
+     77.0,
+     83.0
+    ],
+    "share_of_weight": 45.5
+   },
+   "3.5-4": {
+    "n": 363,
+    "n_eff": 358.0,
+    "purity": 79.7,
+    "ci": [
+     75.2,
+     83.5
+    ],
+    "share_of_weight": 21.6
+   },
+   "4-5": {
+    "n": 345,
+    "n_eff": 338.4,
+    "purity": 78.5,
+    "ci": [
+     73.8,
+     82.5
+    ],
+    "share_of_weight": 20.1
+   },
+   "5-6": {
+    "n": 172,
+    "n_eff": 160.0,
+    "purity": 70.4,
+    "ci": [
+     63.0,
+     77.0
+    ],
+    "share_of_weight": 6.9
+   },
+   "6-8": {
+    "n": 139,
+    "n_eff": 125.0,
+    "purity": 73.8,
+    "ci": [
+     65.5,
+     80.7
+    ],
+    "share_of_weight": 4.0
+   },
+   "8-30": {
+    "n": 180,
+    "n_eff": 122.7,
+    "purity": 79.6,
+    "ci": [
+     71.6,
+     85.8
+    ],
+    "share_of_weight": 1.9
+   }
+  },
+  "mu_eff_g": {
+   "24-25": {
+    "n": 377,
+    "n_eff": 316.9,
+    "purity": 92.8,
+    "ci": [
+     89.4,
+     95.2
+    ],
+    "share_of_weight": 18.4
+   },
+   "25-25.5": {
+    "n": 349,
+    "n_eff": 283.1,
+    "purity": 82.7,
+    "ci": [
+     77.9,
+     86.7
+    ],
+    "share_of_weight": 16.0
+   },
+   "25.5-26": {
+    "n": 424,
+    "n_eff": 369.9,
+    "purity": 77.6,
+    "ci": [
+     73.0,
+     81.5
+    ],
+    "share_of_weight": 22.1
+   },
+   "26-26.51": {
+    "n": 717,
+    "n_eff": 675.7,
+    "purity": 72.0,
+    "ci": [
+     68.5,
+     75.3
+    ],
+    "share_of_weight": 43.4
+   }
+  },
+  "mag_r": {
+   "14-19": {
+    "n": 454,
+    "n_eff": 311.9,
+    "purity": 71.9,
+    "ci": [
+     66.6,
+     76.6
+    ],
+    "share_of_weight": 13.8
+   },
+   "19-20": {
+    "n": 655,
+    "n_eff": 618.4,
+    "purity": 84.8,
+    "ci": [
+     81.8,
+     87.5
+    ],
+    "share_of_weight": 36.9
+   },
+   "20-20.5": {
+    "n": 305,
+    "n_eff": 299.7,
+    "purity": 82.7,
+    "ci": [
+     78.0,
+     86.6
+    ],
+    "share_of_weight": 19.2
+   },
+   "20.5-21": {
+    "n": 238,
+    "n_eff": 234.7,
+    "purity": 79.2,
+    "ci": [
+     73.5,
+     83.9
+    ],
+    "share_of_weight": 15.7
+   },
+   "21-21.5": {
+    "n": 157,
+    "n_eff": 154.3,
+    "purity": 70.2,
+    "ci": [
+     62.5,
+     76.8
+    ],
+    "share_of_weight": 10.7
+   },
+   "21.5-22": {
+    "n": 42,
+    "n_eff": 41.4,
+    "purity": 53.6,
+    "ci": [
+     38.8,
+     67.8
+    ],
+    "share_of_weight": 2.9
+   },
+   "22-25": {
+    "n": 12,
+    "n_eff": 9.1,
+    "purity": 23.9,
+    "ci": [
+     7.2,
+     56.1
+    ],
+    "share_of_weight": 0.6
+   },
+   "out": {
+    "n": 4,
+    "n_eff": 2.3,
+    "purity": 0.0,
+    "ci": [
+     0.0,
+     62.7
+    ],
+    "share_of_weight": 0.2
+   }
+  },
+  "gal_b": {
+   "12-20": {
+    "n": 67,
+    "n_eff": 57.6,
+    "purity": 77.0,
+    "ci": [
+     64.6,
+     86.0
+    ],
+    "share_of_weight": 3.0
+   },
+   "20-30": {
+    "n": 901,
+    "n_eff": 811.0,
+    "purity": 82.2,
+    "ci": [
+     79.4,
+     84.7
+    ],
+    "share_of_weight": 43.8
+   },
+   "30-45": {
+    "n": 508,
+    "n_eff": 435.6,
+    "purity": 77.8,
+    "ci": [
+     73.6,
+     81.4
+    ],
+    "share_of_weight": 28.9
+   },
+   "45-60": {
+    "n": 236,
+    "n_eff": 211.6,
+    "purity": 77.5,
+    "ci": [
+     71.5,
+     82.6
+    ],
+    "share_of_weight": 14.2
+   },
+   "60-91": {
+    "n": 155,
+    "n_eff": 146.2,
+    "purity": 69.2,
+    "ci": [
+     61.3,
+     76.1
+    ],
+    "share_of_weight": 10.1
+   }
+  },
+  "deepshadows_mean": {
+   "0-0.2": {
+    "n": 858,
+    "n_eff": 793.8,
+    "purity": 61.2,
+    "ci": [
+     57.7,
+     64.5
+    ],
+    "share_of_weight": 49.8
+   },
+   "0.2-0.4": {
+    "n": 333,
+    "n_eff": 295.8,
+    "purity": 90.9,
+    "ci": [
+     87.1,
+     93.7
+    ],
+    "share_of_weight": 18.5
+   },
+   "0.4-0.6": {
+    "n": 227,
+    "n_eff": 178.3,
+    "purity": 98.0,
+    "ci": [
+     94.7,
+     99.2
+    ],
+    "share_of_weight": 9.9
+   },
+   "0.6-0.8": {
+    "n": 147,
+    "n_eff": 118.4,
+    "purity": 99.9,
+    "ci": [
+     96.6,
+     100.0
+    ],
+    "share_of_weight": 6.5
+   },
+   "0.8-1.01": {
+    "n": 302,
+    "n_eff": 258.6,
+    "purity": 100.0,
+    "ci": [
+     98.5,
+     100.0
+    ],
+    "share_of_weight": 15.2
+   }
+  },
+  "type": {
+   "DEV": {
+    "n": 434,
+    "n_eff": 414.4,
+    "purity": 93.4,
+    "ci": [
+     90.6,
+     95.4
+    ],
+    "share_of_weight": 26.7
+   },
+   "EXP": {
+    "n": 274,
+    "n_eff": 250.8,
+    "purity": 76.9,
+    "ci": [
+     71.3,
+     81.7
+    ],
+    "share_of_weight": 15.4
+   },
+   "REX": {
+    "n": 180,
+    "n_eff": 164.1,
+    "purity": 37.0,
+    "ci": [
+     30.0,
+     44.6
+    ],
+    "share_of_weight": 10.2
+   },
+   "SER": {
+    "n": 979,
+    "n_eff": 815.0,
+    "purity": 80.1,
+    "ci": [
+     77.2,
+     82.7
+    ],
+    "share_of_weight": 47.7
+   }
+  },
+  "centroid_flag": {
+   "0": {
+    "n": 1518,
+    "n_eff": 1324.1,
+    "purity": 85.3,
+    "ci": [
+     83.3,
+     87.1
+    ],
+    "share_of_weight": 80.5
+   },
+   "1": {
+    "n": 349,
+    "n_eff": 317.4,
+    "purity": 51.9,
+    "ci": [
+     46.5,
+     57.4
+    ],
+    "share_of_weight": 19.5
+   }
+  },
+  "nearest_galaxy_arcsec": {
+   "0-20": {
+    "n": 290,
+    "n_eff": 271.3,
+    "purity": 60.5,
+    "ci": [
+     54.5,
+     66.1
+    ],
+    "share_of_weight": 17.6
+   },
+   "20-30": {
+    "n": 315,
+    "n_eff": 273.9,
+    "purity": 78.3,
+    "ci": [
+     73.1,
+     82.8
+    ],
+    "share_of_weight": 17.2
+   },
+   "30-45": {
+    "n": 489,
+    "n_eff": 414.5,
+    "purity": 83.8,
+    "ci": [
+     80.0,
+     87.1
+    ],
+    "share_of_weight": 26.0
+   },
+   "45-60": {
+    "n": 171,
+    "n_eff": 152.1,
+    "purity": 83.8,
+    "ci": [
+     77.1,
+     88.8
+    ],
+    "share_of_weight": 8.8
+   },
+   "60-100": {
+    "n": 602,
+    "n_eff": 534.2,
+    "purity": 83.9,
+    "ci": [
+     80.5,
+     86.7
+    ],
+    "share_of_weight": 30.3
+   }
+  },
+  "part": {
+   "add": {
+    "n": 899,
+    "n_eff": 793.2,
+    "purity": 76.1,
+    "ci": [
+     73.0,
+     78.9
+    ],
+    "share_of_weight": 53.3
+   },
+   "ext": {
+    "n": 968,
+    "n_eff": 868.5,
+    "purity": 81.9,
+    "ci": [
+     79.2,
+     84.3
+    ],
+    "share_of_weight": 46.7
+   }
+  },
+  "group": {
+   "des": {
+    "n": 12,
+    "n_eff": 11.4,
+    "purity": 91.1,
+    "ci": [
+     63.0,
+     98.4
+    ],
+    "share_of_weight": 0.8
+   },
+   "ext_back": {
+    "n": 74,
+    "n_eff": 69.1,
+    "purity": 83.0,
+    "ci": [
+     72.5,
+     90.1
+    ],
+    "share_of_weight": 3.9
+   },
+   "ext_known": {
+    "n": 27,
+    "n_eff": 25.7,
+    "purity": 77.8,
+    "ci": [
+     58.7,
+     89.6
+    ],
+    "share_of_weight": 1.4
+   },
+   "ext_v1.2": {
+    "n": 584,
+    "n_eff": 518.3,
+    "purity": 84.1,
+    "ci": [
+     80.7,
+     87.0
+    ],
+    "share_of_weight": 27.6
+   },
+   "main_back": {
+    "n": 239,
+    "n_eff": 207.7,
+    "purity": 81.5,
+    "ci": [
+     75.6,
+     86.2
+    ],
+    "share_of_weight": 14.1
+   },
+   "main_known": {
+    "n": 118,
+    "n_eff": 106.1,
+    "purity": 81.7,
+    "ci": [
+     73.2,
+     87.9
+    ],
+    "share_of_weight": 7.0
+   },
+   "mined_ext": {
+    "n": 283,
+    "n_eff": 255.5,
+    "purity": 77.6,
+    "ci": [
+     72.1,
+     82.2
+    ],
+    "share_of_weight": 13.9
+   },
+   "mined_main": {
+    "n": 530,
+    "n_eff": 468.1,
+    "purity": 72.0,
+    "ci": [
+     67.8,
+     75.9
+    ],
+    "share_of_weight": 31.4
+   }
+  },
+  "session": {
+   "13 Oct": {
+    "n": 670,
+    "n_eff": 596.6,
+    "purity": 79.6,
+    "ci": [
+     76.1,
+     82.6
+    ],
+    "share_of_weight": 36.2
+   },
+   "24 Oct": {
+    "n": 1197,
+    "n_eff": 1044.9,
+    "purity": 78.4,
+    "ci": [
+     75.8,
+     80.7
+    ],
+    "share_of_weight": 63.8
+   }
+  },
+  "gaia_stars_30": {
+   "0-1": {
+    "n": 439,
+    "n_eff": 388.2,
+    "purity": 75.2,
+    "ci": [
+     70.7,
+     79.3
+    ],
+    "share_of_weight": 25.1
+   },
+   "1-2": {
+    "n": 472,
+    "n_eff": 417.5,
+    "purity": 81.8,
+    "ci": [
+     77.8,
+     85.2
+    ],
+    "share_of_weight": 26.1
+   },
+   "2-3": {
+    "n": 306,
+    "n_eff": 267.1,
+    "purity": 79.5,
+    "ci": [
+     74.3,
+     83.9
+    ],
+    "share_of_weight": 16.3
+   },
+   "3-4": {
+    "n": 242,
+    "n_eff": 213.8,
+    "purity": 78.8,
+    "ci": [
+     72.8,
+     83.8
+    ],
+    "share_of_weight": 12.6
+   },
+   "4-5": {
+    "n": 408,
+    "n_eff": 360.3,
+    "purity": 78.8,
+    "ci": [
+     74.3,
+     82.7
+    ],
+    "share_of_weight": 19.8
+   }
+  },
+  "gaia_star_within_2re": {
+   "0": {
+    "n": 1499,
+    "n_eff": 1372.4,
+    "purity": 79.5,
+    "ci": [
+     77.3,
+     81.6
+    ],
+    "share_of_weight": 85.6
+   },
+   "1": {
+    "n": 368,
+    "n_eff": 275.4,
+    "purity": 74.4,
+    "ci": [
+     68.9,
+     79.2
+    ],
+    "share_of_weight": 14.4
+   }
+  },
+  "brightest_star_30": {
+   "0-14": {
+    "n": 46,
+    "n_eff": 39.8,
+    "purity": 76.5,
+    "ci": [
+     61.3,
+     86.9
+    ],
+    "share_of_weight": 2.4
+   },
+   "14-17": {
+    "n": 518,
+    "n_eff": 454.1,
+    "purity": 79.7,
+    "ci": [
+     75.7,
+     83.1
+    ],
+    "share_of_weight": 26.5
+   },
+   "17-19": {
+    "n": 533,
+    "n_eff": 469.0,
+    "purity": 79.3,
+    "ci": [
+     75.4,
+     82.7
+    ],
+    "share_of_weight": 28.0
+   },
+   "19-21": {
+    "n": 331,
+    "n_eff": 292.9,
+    "purity": 82.0,
+    "ci": [
+     77.1,
+     85.9
+    ],
+    "share_of_weight": 18.0
+   },
+   "21-100": {
+    "n": 439,
+    "n_eff": 388.2,
+    "purity": 75.2,
+    "ci": [
+     70.7,
+     79.3
+    ],
+    "share_of_weight": 25.1
+   }
+  },
+  "nearest_galaxy_split": {
+   "a: within 20": {
+    "n": 290,
+    "n_eff": 271.3,
+    "purity": 60.5,
+    "ci": [
+     54.5,
+     66.1
+    ],
+    "share_of_weight": 17.6
+   },
+   "b: 20-30": {
+    "n": 315,
+    "n_eff": 273.9,
+    "purity": 78.3,
+    "ci": [
+     73.1,
+     82.8
+    ],
+    "share_of_weight": 17.2
+   },
+   "c: beyond 30": {
+    "n": 1262,
+    "n_eff": 1098.3,
+    "purity": 83.8,
+    "ci": [
+     81.6,
+     85.9
+    ],
+    "share_of_weight": 65.2
+   }
+  },
+  "nearest_galaxy_over_re": {
+   "0-4": {
+    "n": 277,
+    "n_eff": 197.1,
+    "purity": 53.3,
+    "ci": [
+     46.3,
+     60.1
+    ],
+    "share_of_weight": 11.1
+   },
+   "4-6": {
+    "n": 251,
+    "n_eff": 211.6,
+    "purity": 73.6,
+    "ci": [
+     67.3,
+     79.1
+    ],
+    "share_of_weight": 12.8
+   },
+   "6-10": {
+    "n": 438,
+    "n_eff": 390.5,
+    "purity": 82.6,
+    "ci": [
+     78.6,
+     86.1
+    ],
+    "share_of_weight": 24.8
+   },
+   "10-15": {
+    "n": 325,
+    "n_eff": 292.3,
+    "purity": 83.2,
+    "ci": [
+     78.5,
+     87.1
+    ],
+    "share_of_weight": 18.7
+   },
+   "15-1000": {
+    "n": 576,
+    "n_eff": 552.8,
+    "purity": 84.0,
+    "ci": [
+     80.8,
+     86.9
+    ],
+    "share_of_weight": 32.7
+   }
+  }
+ },
+ "first": {
+  "shape_r": {
+   "3-3.5": {
+    "n": 341,
+    "n_eff": 340.8,
+    "purity": 89.8,
+    "ci": [
+     86.1,
+     92.5
+    ],
+    "share_of_weight": 46.1
+   },
+   "3.5-4": {
+    "n": 188,
+    "n_eff": 187.4,
+    "purity": 86.5,
+    "ci": [
+     80.9,
+     90.7
+    ],
+    "share_of_weight": 23.0
+   },
+   "4-5": {
+    "n": 168,
+    "n_eff": 166.8,
+    "purity": 93.0,
+    "ci": [
+     88.0,
+     96.0
+    ],
+    "share_of_weight": 18.9
+   },
+   "5-6": {
+    "n": 89,
+    "n_eff": 84.3,
+    "purity": 93.4,
+    "ci": [
+     86.0,
+     97.1
+    ],
+    "share_of_weight": 6.8
+   },
+   "6-8": {
+    "n": 65,
+    "n_eff": 60.3,
+    "purity": 95.4,
+    "ci": [
+     86.9,
+     98.5
+    ],
+    "share_of_weight": 3.6
+   },
+   "8-30": {
+    "n": 95,
+    "n_eff": 77.9,
+    "purity": 92.0,
+    "ci": [
+     83.9,
+     96.2
+    ],
+    "share_of_weight": 1.6
+   }
+  },
+  "mu_eff_g": {
+   "24-25": {
+    "n": 224,
+    "n_eff": 191.4,
+    "purity": 97.0,
+    "ci": [
+     93.5,
+     98.6
+    ],
+    "share_of_weight": 21.0
+   },
+   "25-25.5": {
+    "n": 197,
+    "n_eff": 163.3,
+    "purity": 95.1,
+    "ci": [
+     90.6,
+     97.5
+    ],
+    "share_of_weight": 18.1
+   },
+   "25.5-26": {
+    "n": 247,
+    "n_eff": 217.4,
+    "purity": 82.2,
+    "ci": [
+     76.6,
+     86.7
+    ],
+    "share_of_weight": 25.5
+   },
+   "26-26.51": {
+    "n": 278,
+    "n_eff": 262.7,
+    "purity": 88.9,
+    "ci": [
+     84.5,
+     92.1
+    ],
+    "share_of_weight": 35.3
+   }
+  },
+  "mag_r": {
+   "14-19": {
+    "n": 236,
+    "n_eff": 158.0,
+    "purity": 86.3,
+    "ci": [
+     80.1,
+     90.8
+    ],
+    "share_of_weight": 13.4
+   },
+   "19-20": {
+    "n": 387,
+    "n_eff": 373.2,
+    "purity": 87.6,
+    "ci": [
+     83.9,
+     90.6
+    ],
+    "share_of_weight": 44.5
+   },
+   "20-20.5": {
+    "n": 155,
+    "n_eff": 153.8,
+    "purity": 97.3,
+    "ci": [
+     93.4,
+     98.9
+    ],
+    "share_of_weight": 19.5
+   },
+   "20.5-21": {
+    "n": 109,
+    "n_eff": 108.3,
+    "purity": 95.2,
+    "ci": [
+     89.4,
+     97.9
+    ],
+    "share_of_weight": 14.7
+   },
+   "21-21.5": {
+    "n": 40,
+    "n_eff": 39.9,
+    "purity": 90.3,
+    "ci": [
+     77.3,
+     96.2
+    ],
+    "share_of_weight": 5.7
+   },
+   "21.5-22": {
+    "n": 12,
+    "n_eff": 11.1,
+    "purity": 73.5,
+    "ci": [
+     44.3,
+     90.6
+    ],
+    "share_of_weight": 1.6
+   },
+   "22-25": {
+    "n": 6,
+    "n_eff": 5.0,
+    "purity": 42.5,
+    "ci": [
+     13.0,
+     78.6
+    ],
+    "share_of_weight": 0.6
+   },
+   "out": {
+    "n": 1,
+    "n_eff": 1.0,
+    "purity": 0.0,
+    "ci": [
+     0.0,
+     79.3
+    ],
+    "share_of_weight": 0.0
+   }
+  },
+  "gal_b": {
+   "30-45": {
+    "n": 578,
+    "n_eff": 494.7,
+    "purity": 90.1,
+    "ci": [
+     87.1,
+     92.4
+    ],
+    "share_of_weight": 58.8
+   },
+   "45-60": {
+    "n": 265,
+    "n_eff": 240.0,
+    "purity": 91.7,
+    "ci": [
+     87.5,
+     94.6
+    ],
+    "share_of_weight": 29.0
+   },
+   "60-91": {
+    "n": 103,
+    "n_eff": 98.8,
+    "purity": 86.5,
+    "ci": [
+     78.4,
+     91.9
+    ],
+    "share_of_weight": 12.2
+   }
+  },
+  "deepshadows_mean": {
+   "0-0.2": {
+    "n": 208,
+    "n_eff": 195.2,
+    "purity": 74.2,
+    "ci": [
+     67.6,
+     79.8
+    ],
+    "share_of_weight": 27.3
+   },
+   "0.2-0.4": {
+    "n": 201,
+    "n_eff": 192.6,
+    "purity": 87.9,
+    "ci": [
+     82.6,
+     91.8
+    ],
+    "share_of_weight": 24.2
+   },
+   "0.4-0.6": {
+    "n": 157,
+    "n_eff": 129.9,
+    "purity": 98.2,
+    "ci": [
+     94.2,
+     99.5
+    ],
+    "share_of_weight": 14.6
+   },
+   "0.6-0.8": {
+    "n": 103,
+    "n_eff": 81.9,
+    "purity": 98.3,
+    "ci": [
+     92.7,
+     99.6
+    ],
+    "share_of_weight": 8.5
+   },
+   "0.8-1.01": {
+    "n": 277,
+    "n_eff": 235.7,
+    "purity": 99.5,
+    "ci": [
+     97.5,
+     99.9
+    ],
+    "share_of_weight": 25.3
+   }
+  },
+  "type": {
+   "DEV": {
+    "n": 240,
+    "n_eff": 229.0,
+    "purity": 95.1,
+    "ci": [
+     91.5,
+     97.2
+    ],
+    "share_of_weight": 29.1
+   },
+   "EXP": {
+    "n": 150,
+    "n_eff": 141.6,
+    "purity": 98.5,
+    "ci": [
+     94.9,
+     99.6
+    ],
+    "share_of_weight": 16.9
+   },
+   "REX": {
+    "n": 37,
+    "n_eff": 34.8,
+    "purity": 73.4,
+    "ci": [
+     56.9,
+     85.2
+    ],
+    "share_of_weight": 4.7
+   },
+   "SER": {
+    "n": 519,
+    "n_eff": 429.3,
+    "purity": 85.6,
+    "ci": [
+     82.0,
+     88.6
+    ],
+    "share_of_weight": 49.3
+   }
+  },
+  "centroid_flag": {
+   "0": {
+    "n": 881,
+    "n_eff": 777.7,
+    "purity": 90.7,
+    "ci": [
+     88.5,
+     92.6
+    ],
+    "share_of_weight": 93.2
+   },
+   "1": {
+    "n": 65,
+    "n_eff": 55.3,
+    "purity": 81.7,
+    "ci": [
+     69.6,
+     89.7
+    ],
+    "share_of_weight": 6.8
+   }
+  },
+  "nearest_galaxy_arcsec": {
+   "45-60": {
+    "n": 216,
+    "n_eff": 187.2,
+    "purity": 89.0,
+    "ci": [
+     83.7,
+     92.7
+    ],
+    "share_of_weight": 22.3
+   },
+   "60-100": {
+    "n": 730,
+    "n_eff": 645.8,
+    "purity": 90.4,
+    "ci": [
+     87.9,
+     92.5
+    ],
+    "share_of_weight": 77.7
+   }
+  }
+ },
+ "composition": {
+  "first sample (original)": {
+   "n": 997,
+   "median_shape_r": 3.82,
+   "share_r_lt_4": 56.4,
+   "median_mu": 25.65,
+   "median_mag_r": 19.63,
+   "median_abs_b": 41.0,
+   "share_ext": 0.0
+  },
+  "second sample, all": {
+   "n": 1868,
+   "median_shape_r": 3.81,
+   "share_r_lt_4": 55.2,
+   "median_mu": 25.76,
+   "median_mag_r": 19.75,
+   "median_abs_b": 29.6,
+   "share_ext": 51.9,
+   "mean_gaia_stars_30": 2.16,
+   "share_star_within_2re": 19.7
+  },
+  "second, judged 13 Oct": {
+   "n": 670,
+   "median_shape_r": 3.76,
+   "share_r_lt_4": 56.0,
+   "median_mu": 25.71,
+   "median_mag_r": 19.7,
+   "median_abs_b": 29.1,
+   "share_ext": 54.3,
+   "mean_gaia_stars_30": 2.18,
+   "share_star_within_2re": 19.9
+  },
+  "second, judged 24 Oct": {
+   "n": 1198,
+   "median_shape_r": 3.86,
+   "share_r_lt_4": 54.8,
+   "median_mu": 25.81,
+   "median_mag_r": 19.79,
+   "median_abs_b": 29.8,
+   "share_ext": 50.5,
+   "mean_gaia_stars_30": 2.15,
+   "share_star_within_2re": 19.6
+  },
+  "second, add 13 Oct": {
+   "n": 306,
+   "median_shape_r": 3.72,
+   "share_r_lt_4": 55.6,
+   "median_mu": 25.86,
+   "median_mag_r": 19.84,
+   "median_abs_b": 43.3,
+   "share_ext": 0.0,
+   "mean_gaia_stars_30": 1.06,
+   "share_star_within_2re": 9.8,
+   "purity": {
+    "n": 306,
+    "n_eff": 277.1,
+    "purity": 77.4,
+    "ci": [
+     72.1,
+     81.9
+    ],
+    "share_of_weight": null
+   }
+  },
+  "second, add 24 Oct": {
+   "n": 593,
+   "median_shape_r": 3.78,
+   "share_r_lt_4": 57.7,
+   "median_mu": 25.81,
+   "median_mag_r": 19.9,
+   "median_abs_b": 43.2,
+   "share_ext": 0.0,
+   "mean_gaia_stars_30": 1.17,
+   "share_star_within_2re": 11.3,
+   "purity": {
+    "n": 593,
+    "n_eff": 516.2,
+    "purity": 75.4,
+    "ci": [
+     71.5,
+     78.9
+    ],
+    "share_of_weight": null
+   }
+  },
+  "second, ext 13 Oct": {
+   "n": 364,
+   "median_shape_r": 3.78,
+   "share_r_lt_4": 56.3,
+   "median_mu": 25.57,
+   "median_mag_r": 19.57,
+   "median_abs_b": 24.5,
+   "share_ext": 100.0,
+   "mean_gaia_stars_30": 3.12,
+   "share_star_within_2re": 28.3,
+   "purity": {
+    "n": 364,
+    "n_eff": 326.5,
+    "purity": 81.9,
+    "ci": [
+     77.3,
+     85.7
+    ],
+    "share_of_weight": null
+   }
+  },
+  "second, ext 24 Oct": {
+   "n": 605,
+   "median_shape_r": 3.94,
+   "share_r_lt_4": 51.9,
+   "median_mu": 25.8,
+   "median_mag_r": 19.67,
+   "median_abs_b": 24.6,
+   "share_ext": 100.0,
+   "mean_gaia_stars_30": 3.12,
+   "share_star_within_2re": 27.8,
+   "purity": {
+    "n": 604,
+    "n_eff": 542.0,
+    "purity": 81.9,
+    "ci": [
+     78.4,
+     84.9
+    ],
+    "share_of_weight": null
+   }
+  }
+ },
+ "score": {
+  "original >= 0.06": {
+   "above": {
+    "n": 881,
+    "n_eff": 772.1,
+    "purity": 92.1,
+    "ci": [
+     90.0,
+     93.8
+    ],
+    "share_of_weight": null
+   },
+   "below": {
+    "n": 65,
+    "n_eff": 61.0,
+    "purity": 66.1,
+    "ci": [
+     53.6,
+     76.7
+    ],
+    "share_of_weight": null
+   },
+   "all": {
+    "n": 946,
+    "n_eff": 833.0,
+    "purity": 90.1,
+    "ci": [
+     87.9,
+     92.0
+    ],
+    "share_of_weight": null
+   },
+   "share_of_part_above": 90.4,
+   "share_of_galaxies_kept": 94.4,
+   "share_of_rest_removed": 26.1
+  },
+  "recovered >= 0.06": {
+   "above": {
+    "n": 635,
+    "n_eff": 552.9,
+    "purity": 90.3,
+    "ci": [
+     87.5,
+     92.5
+    ],
+    "share_of_weight": null
+   },
+   "below": {
+    "n": 264,
+    "n_eff": 240.4,
+    "purity": 43.2,
+    "ci": [
+     37.1,
+     49.5
+    ],
+    "share_of_weight": null
+   },
+   "all": {
+    "n": 899,
+    "n_eff": 793.2,
+    "purity": 76.1,
+    "ci": [
+     73.0,
+     78.9
+    ],
+    "share_of_weight": null
+   },
+   "share_of_part_above": 69.3,
+   "share_of_galaxies_kept": 82.9,
+   "share_of_rest_removed": 71.7
+  },
+  "extension >= 0.06": {
+   "above": {
+    "n": 720,
+    "n_eff": 633.9,
+    "purity": 90.1,
+    "ci": [
+     87.6,
+     92.2
+    ],
+    "share_of_weight": null
+   },
+   "below": {
+    "n": 248,
+    "n_eff": 235.3,
+    "purity": 61.0,
+    "ci": [
+     54.6,
+     67.0
+    ],
+    "share_of_weight": null
+   },
+   "all": {
+    "n": 968,
+    "n_eff": 868.5,
+    "purity": 81.9,
+    "ci": [
+     79.2,
+     84.3
+    ],
+    "share_of_weight": null
+   },
+   "share_of_part_above": 71.3,
+   "share_of_galaxies_kept": 78.9,
+   "share_of_rest_removed": 61.0
+  },
+  "original >= 0.2": {
+   "above": {
+    "n": 738,
+    "n_eff": 638.8,
+    "purity": 95.4,
+    "ci": [
+     93.5,
+     96.8
+    ],
+    "share_of_weight": null
+   },
+   "below": {
+    "n": 208,
+    "n_eff": 195.2,
+    "purity": 74.2,
+    "ci": [
+     67.6,
+     79.8
+    ],
+    "share_of_weight": null
+   },
+   "all": {
+    "n": 946,
+    "n_eff": 833.0,
+    "purity": 90.1,
+    "ci": [
+     87.9,
+     92.0
+    ],
+    "share_of_weight": null
+   },
+   "share_of_part_above": 70.3,
+   "share_of_galaxies_kept": 79.5,
+   "share_of_rest_removed": 65.1
+  },
+  "recovered >= 0.2": {
+   "above": {
+    "n": 477,
+    "n_eff": 405.4,
+    "purity": 96.5,
+    "ci": [
+     94.2,
+     97.9
+    ],
+    "share_of_weight": null
+   },
+   "below": {
+    "n": 422,
+    "n_eff": 388.2,
+    "purity": 55.7,
+    "ci": [
+     50.7,
+     60.5
+    ],
+    "share_of_weight": null
+   },
+   "all": {
+    "n": 899,
+    "n_eff": 793.2,
+    "purity": 76.1,
+    "ci": [
+     73.0,
+     78.9
+    ],
+    "share_of_weight": null
+   },
+   "share_of_part_above": 48.7,
+   "share_of_galaxies_kept": 63.4,
+   "share_of_rest_removed": 92.6
+  },
+  "extension >= 0.2": {
+   "above": {
+    "n": 532,
+    "n_eff": 455.9,
+    "purity": 96.0,
+    "ci": [
+     93.8,
+     97.4
+    ],
+    "share_of_weight": null
+   },
+   "below": {
+    "n": 436,
+    "n_eff": 413.9,
+    "purity": 67.5,
+    "ci": [
+     62.9,
+     71.9
+    ],
+    "share_of_weight": null
+   },
+   "all": {
+    "n": 968,
+    "n_eff": 868.5,
+    "purity": 81.9,
+    "ci": [
+     79.2,
+     84.3
+    ],
+    "share_of_weight": null
+   },
+   "share_of_part_above": 47.7,
+   "share_of_galaxies_kept": 59.2,
+   "share_of_rest_removed": 88.8
+  },
+  "original >= 0.4": {
+   "above": {
+    "n": 537,
+    "n_eff": 447.2,
+    "purity": 98.9,
+    "ci": [
+     97.5,
+     99.5
+    ],
+    "share_of_weight": null
+   },
+   "below": {
+    "n": 409,
+    "n_eff": 387.7,
+    "purity": 80.9,
+    "ci": [
+     76.7,
+     84.5
+    ],
+    "share_of_weight": null
+   },
+   "all": {
+    "n": 946,
+    "n_eff": 833.0,
+    "purity": 90.1,
+    "ci": [
+     87.9,
+     92.0
+    ],
+    "share_of_weight": null
+   },
+   "share_of_part_above": 47.3,
+   "share_of_galaxies_kept": 56.2,
+   "share_of_rest_removed": 94.4
+  },
+  "recovered >= 0.4": {
+   "above": {
+    "n": 309,
+    "n_eff": 248.4,
+    "purity": 99.5,
+    "ci": [
+     97.5,
+     99.9
+    ],
+    "share_of_weight": null
+   },
+   "below": {
+    "n": 590,
+    "n_eff": 545.8,
+    "purity": 66.2,
+    "ci": [
+     62.1,
+     70.1
+    ],
+    "share_of_weight": null
+   },
+   "all": {
+    "n": 899,
+    "n_eff": 793.2,
+    "purity": 76.1,
+    "ci": [
+     73.0,
+     78.9
+    ],
+    "share_of_weight": null
+   },
+   "share_of_part_above": 31.5,
+   "share_of_galaxies_kept": 38.8,
+   "share_of_rest_removed": 99.3
+  },
+  "extension >= 0.4": {
+   "above": {
+    "n": 367,
+    "n_eff": 313.6,
+    "purity": 99.2,
+    "ci": [
+     97.5,
+     99.7
+    ],
+    "share_of_weight": null
+   },
+   "below": {
+    "n": 601,
+    "n_eff": 556.3,
+    "purity": 72.9,
+    "ci": [
+     69.1,
+     76.5
+    ],
+    "share_of_weight": null
+   },
+   "all": {
+    "n": 968,
+    "n_eff": 868.5,
+    "purity": 81.9,
+    "ci": [
+     79.2,
+     84.3
+    ],
+    "share_of_weight": null
+   },
+   "share_of_part_above": 30.6,
+   "share_of_galaxies_kept": 41.3,
+   "share_of_rest_removed": 98.5
+  }
+ },
+ "first_min_galaxy_sep": 45.0,
+ "score_share_all": {
+  "0.06": 77.9,
+  "0.2": 56.6,
+  "0.4": 37.2
+ },
+ "parts": {
+  "extension": {
+   "n": 124084,
+   "median_shape_r": 3.63,
+   "share_r_lt_4": 64.7,
+   "median_mu": 25.82,
+   "median_abs_b": 24.8
+  },
+  "original": {
+   "n": 161533,
+   "median_shape_r": 3.55,
+   "share_r_lt_4": 70.0,
+   "median_mu": 25.76,
+   "median_abs_b": 42.1
+  },
+  "recovered": {
+   "n": 141405,
+   "median_shape_r": 3.54,
+   "share_r_lt_4": 69.2,
+   "median_mu": 25.91,
+   "median_abs_b": 44.4
+  }
+ }
+}

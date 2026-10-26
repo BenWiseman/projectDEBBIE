@@ -45,16 +45,22 @@ including DES DR2 within 45").
 
 Scores from radial light profiles: `deepshadows_trees`, `deepshadows_network` and their mean
 `deepshadows_mean`, trained on the DeepShadows labels. `stage2_*` come from a second pair that
-fails against visual verdicts and should not be used for selection. No entry is removed on
-its score; `nan` where the entry has no usable image.
+separates galaxies from the rest poorly against visual verdicts (AUC 0.41 and 0.61 on the two
+samples) and should not be used for selection. No entry is removed on its score; `nan` where
+the entry has no usable image. Entries with `deepshadows_mean` above 0.2, 57 per cent of the
+catalogue, are 95 to 97 per cent galaxies in each part.
 
 `centroid_offset`: distance from the catalogued position to a flux-weighted centroid on the
 DR10 images. `centroid_flag`: 0 measured, 1 beyond 2.5" or unmeasurable, 2 no usable image.
 
 ## Caveats
 
-Purity from visual inspection of stratified samples is 85 to 89 per cent depending on the
-part; the recovered and extension figures come from a sample still being judged. The cuts
+Visual inspection of stratified samples finds a galaxy at the catalogued position for 89.1
+per cent of the original part (95 per cent interval 86.4 to 91.6), 76.1 per cent of the recovered part
+(73.0 to 78.9) and 81.9 per cent of the extension (79.2 to 84.3), undecided objects left out.
+Purity falls close to catalogued galaxies: in the sample of the recovered part and the
+extension it is 60 per cent within 20" of one and 84 per cent beyond 30". The original part
+lies at least 45" from them. The cuts
 keep most known galaxies with `SHAPE_R` of 3 to 15" in the surface-brightness window and
 almost none larger. The screen is uneven across the sky: inside the SDSS footprint far fewer
 entries survive than outside it. Numbers are assigned once and never reused, so the sequence
