@@ -44,10 +44,10 @@ including DES DR2 within 45").
 `nobs_g/r/z`; `ebv` (not applied anywhere).
 
 Scores from radial light profiles: `deepshadows_trees`, `deepshadows_network` and their mean
-`deepshadows_mean`, trained on the DeepShadows labels. `stage2_*` come from a second pair that
-separates galaxies from the rest poorly against visual verdicts (AUC 0.41 and 0.61 on the two
-samples) and should not be used for selection. No entry is removed on its score; `nan` where
-the entry has no usable image. Entries with `deepshadows_mean` above 0.2, 57 per cent of the
+`deepshadows_mean`, trained on the DeepShadows labels. No entry is removed on its score; `nan`
+where the entry has no usable image. A second pair, trained on HyperLEDA galaxies against stars
+and faint Tractor fits, separated galaxies from the rest poorly against the visual verdicts
+(AUC 0.41 and 0.61 on the two samples) and is not released. Entries with `deepshadows_mean` above 0.2, 57 per cent of the
 catalogue, are 95 to 97 per cent galaxies in each part.
 
 `centroid_offset`: distance from the catalogued position to a flux-weighted centroid on the

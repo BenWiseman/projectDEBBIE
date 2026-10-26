@@ -8,7 +8,7 @@ New upload in the AAS Journals community: https://zenodo.org/uploads/new?communi
 (the RNAAS guidelines point there for data tables).
 
 - Files, all from `catalogue/`: `DEBBIE_v1.5.csv`, `DEBBIE_v1.5.ecsv`, `README.md`,
-  `SHA256SUMS` (263 MB together).
+  `SHA256SUMS` (238 MB together).
 - DOI: "Do you already have a DOI?" No, then "Get a DOI now!". Send the DOI to Claude before
   publishing. It goes into `~/star/paper/rnaas/fill_rnaas.py` (ZENODO), the Note is rebuilt
   and the sync copies it here.
@@ -30,7 +30,7 @@ Submit at https://journals.aas.org/submission/ (journal: Research Notes of the A
   there is no figure.
 - Title, abstract and author come from the .tex. UAT keywords are collected at acceptance,
   not now (AAS manuscript preparation page, read 2026-10-24).
-- Words: 1,431 of 1,500 by texcount with references; abstract 148 of 150. The AAS counts
+- Words: 1,424 of 1,500 by texcount with references; abstract 148 of 150. The AAS counts
   acknowledgements ("these count against your 1500 word limit", RNAAS preparation
   guidelines).
 

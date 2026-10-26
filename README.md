@@ -40,7 +40,7 @@ what follows publication.
 | `showcase/` | v1.2 HTML viewers |
 | `private/` | gitignored: CDS guide, venue notes, review correspondence, handover |
 
-The raw `DEBBIE_v1.5.csv` and `DEBBIE_v1.5.ecsv` (116 and 147 MB) are over GitHub's 100 MB
+The raw `DEBBIE_v1.5.csv` and `DEBBIE_v1.5.ecsv` (106 and 132 MB) are over GitHub's 100 MB
 file limit. They sit in `catalogue/` for the Zenodo upload and are gitignored.
 
 ## Getting images
